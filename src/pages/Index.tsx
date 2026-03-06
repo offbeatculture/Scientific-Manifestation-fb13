@@ -8,8 +8,11 @@ import Testimonials from "@/components/landing/Testimonials";
 import FAQ from "@/components/landing/FAQ";
 import FinalCTA from "@/components/landing/FinalCTA";
 import StickyCTA from "@/components/landing/StickyCTA";
+import { useFacebookPixel } from "@/hooks/useFacebookPixel";
 
 const Index = () => {
+
+  useFacebookPixel();
   return (
     <main className="overflow-hidden">
       <HeroSection />
