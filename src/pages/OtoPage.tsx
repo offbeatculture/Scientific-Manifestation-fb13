@@ -14,12 +14,19 @@ import {
   VolumeX,
   Maximize2,
 } from "lucide-react";
+import { useFacebookPixel } from "@/hooks/useFacebookPixel";
 
 const ACCENT_TEXT = "text-violet-700";
 const ACCENT_SOFT_BG_2 = "bg-violet-100/60";
 const ACCENT_ICON = "text-violet-700";
 
 export default function ManifestationBootcampLanding() {
+
+  useFacebookPixel("Purchase-1499", {
+    value: 1499,
+    currency: "INR",
+  });
+
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 

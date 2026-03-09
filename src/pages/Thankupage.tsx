@@ -6,7 +6,7 @@ const WA_GROUP_LINK = "http://join.ankitneerav.com/smm-wap-fb";
 
 export default function ThankYouFb() {
   // Initializes pixels + PageView
-  useFacebookPixel();
+  useFacebookPixel("Lead");
 
   useEffect(() => {
     document.title =
