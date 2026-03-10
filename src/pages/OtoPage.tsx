@@ -26,6 +26,42 @@ export default function ManifestationBootcampLanding() {
     value: 1499,
     currency: "INR",
   });
+const [sessionDate, setSessionDate] = useState("");
+const [sessionTime, setSessionTime] = useState("");
+
+useEffect(() => {
+  const url =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQTwPzzgnuxnM99svb-wpxDwzfPA-3lZP9cVqLv4hMH0GtKLollq3-tOFZ0jgzug_-vl3zXvo_HBYNs/pub?output=csv&gid=43987342";
+
+  fetch(url)
+    .then((res) => res.text())
+    .then((text) => {
+      const rows = text.split("\n").map((row) => row.split(","));
+
+      console.log(rows); // debug
+
+      const headers = rows[0];
+
+      const columnIndex = headers.findIndex((h) =>
+        h.toLowerCase().includes("5 day")
+      );
+
+      if (columnIndex !== -1 && rows[1]) {
+        const value = rows[1][columnIndex]?.replace(/"/g, "").trim();
+
+        if (value) {
+          const parts = value.split(" ");
+
+          const date = parts.slice(0, 3).join(" ");
+          const time = parts.slice(3).join(" ");
+
+          setSessionDate(date);
+          setSessionTime(time);
+        }
+      }
+    })
+    .catch((err) => console.error("Fetch error:", err));
+}, []);
 
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -311,94 +347,141 @@ export default function ManifestationBootcampLanding() {
 
     <div className="mx-auto max-w-3xl text-center">
       <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
-        Master the Art of{" "}
+        But before  you go {" "}
         <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-          Powerful Manifestation
+          I have Something 
         </span>{" "}
-        in Just 5 Days
+        Special for you
       </h1>
 
-      <p className="mt-3 text-base font-semibold text-slate-700 sm:text-lg">
+      {/* <p className="mt-3 text-base font-semibold text-slate-700 sm:text-lg">
         Learn scientifically proven techniques to communicate with the universe,
         attract abundance, and manifest your dream life — with action-based
         tasks that deliver real results.
-      </p>
+      </p> */}
     </div>
 
-    <div className="mx-auto mt-6 max-w-5xl">
+<div className="mx-auto mt-6 max-w-5xl">
 
-      <GlowCard>
+  <div>
 
-        <p className="text-center text-lg sm:text-xl font-semibold text-slate-900 mb-2">
-          ✨ Watch This Short Video To Discover How The
-          <span className="text-yellow-500 font-bold"> Manifestation Masterclass </span>
-          Will Transform Your Life
-        </p>
+    <p className="text-center text-lg sm:text-xl font-semibold text-slate-900 mb-2">
+      ✨ Watch This Short Video To Discover How The
+      <span className="text-yellow-500 font-bold"> Manifestation Masterclass </span>
+      Will Transform Your Life
+    </p>
 
-        <div
-          ref={videoWrapperRef}
-          className="relative h-[360px] sm:h-[420px] overflow-hidden rounded-2xl border border-slate-200 bg-black shadow-sm"
+    <div
+      ref={videoWrapperRef}
+      className="relative h-[360px] sm:h-[420px] overflow-hidden rounded-2xl border border-slate-200 bg-black shadow-sm"
+    >
+      <iframe
+        ref={iframeRef}
+        className="absolute inset-0 h-full w-full"
+        src={videoSrc}
+        title="Bootcamp overview video"
+        allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+        allowFullScreen
+      />
+
+      <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2">
+        <button
+          type="button"
+          onClick={toggleMute}
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/70 text-white shadow-lg backdrop-blur transition hover:bg-black/85"
+          aria-label={isMuted ? "Unmute video" : "Mute video"}
         >
-          <iframe
-            ref={iframeRef}
-            className="absolute inset-0 h-full w-full"
-            src={videoSrc}
-            title="Bootcamp overview video"
-            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-            allowFullScreen
-          />
+          {isMuted ? (
+            <VolumeX className="h-5 w-5" />
+          ) : (
+            <Volume2 className="h-5 w-5" />
+          )}
+        </button>
 
-          <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2">
-            <button
-              type="button"
-              onClick={toggleMute}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/70 text-white shadow-lg backdrop-blur transition hover:bg-black/85"
-              aria-label={isMuted ? "Unmute video" : "Mute video"}
-            >
-              {isMuted ? (
-                <VolumeX className="h-5 w-5" />
-              ) : (
-                <Volume2 className="h-5 w-5" />
-              )}
-            </button>
+        <button
+          type="button"
+          onClick={handleFullscreen}
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/70 text-white shadow-lg backdrop-blur transition hover:bg-black/85"
+          aria-label="Fullscreen video"
+        >
+          <Maximize2 className="h-5 w-5" />
+        </button>
+      </div>
 
-            <button
-              type="button"
-              onClick={handleFullscreen}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/70 text-white shadow-lg backdrop-blur transition hover:bg-black/85"
-              aria-label="Fullscreen video"
-            >
-              <Maximize2 className="h-5 w-5" />
-            </button>
-          </div>
+      <div className="pointer-events-none absolute bottom-4 left-4 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-extrabold text-slate-700 shadow-sm">
+        {isMuted ? "Video playing • Muted" : "Video playing • Sound ON"}
+      </div>
+    </div>
 
-          <div className="pointer-events-none absolute bottom-4 left-4 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-extrabold text-slate-700 shadow-sm">
-            {isMuted ? "Video playing • Muted" : "Video playing • Sound ON"}
-          </div>
+    {/* MASTERCLASS DATE & TIME */}
+    <div className="mt-6 flex justify-center">
+      <div
+        className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8
+        rounded-xl border border-violet-200 bg-white px-6 py-3 shadow-sm"
+      >
+
+        {/* Date */}
+        <div className="flex flex-col items-center sm:items-start leading-tight">
+          <span className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
+            Date
+          </span>
+          <span className="text-sm sm:text-base font-bold text-violet-700">
+            {sessionDate}
+          </span>
         </div>
 
-        <div className="mt-4 flex flex-col items-center gap-2">
-          <button
-            type="button"
-            onClick={() => window.open(razorpayUrl, "_blank")}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-rose-600 px-6 py-4 text-sm font-black text-white shadow-[0_18px_55px_-35px_rgba(244,63,94,0.6)] transition hover:-translate-y-0.5 hover:bg-rose-700 sm:w-auto"
-          >
-            Click here to join the bootcamp
-            <ArrowRight className="h-4 w-4" />
-          </button>
+        {/* Divider */}
+        <div className="hidden sm:block h-8 w-px bg-slate-200"></div>
 
-          <button
-            type="button"
-            onClick={() => navigate("/thankyou")}
-            className="text-xs font-semibold text-slate-600 underline underline-offset-4 transition hover:text-slate-900"
-          >
-            Take me to the Thank You page
-          </button>
+        {/* Time */}
+        <div className="flex flex-col items-center sm:items-start leading-tight">
+          <span className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
+            Time
+          </span>
+          <span className="text-sm sm:text-base font-bold text-indigo-700">
+            {sessionTime}
+          </span>
         </div>
 
-      </GlowCard>
+      </div>
+    </div>
+
+    <div className="mt-4 flex flex-col items-center gap-2">
+
+      {/* Upgrade Button */}
+      <button
+        type="button"
+        onClick={() => window.open(razorpayUrl, "_blank")}
+        className="inline-flex w-full max-w-md flex-col items-center justify-center rounded-full
+        px-6 py-3 sm:px-7 sm:py-3.5 text-center
+        bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600
+        text-white font-black
+        shadow-[0_18px_50px_-20px_rgba(124,58,237,0.6)]
+        transition hover:scale-[1.02] hover:brightness-110"
+      >
+        <span className="text-sm sm:text-base">
+          YES — Upgrade My Registration To The Bootcamp
+        </span>
+
+        <span className="text-[11px] sm:text-xs font-semibold opacity-90">
+          Lock in ₹1,499 before this offer disappears →
+        </span>
+      </button>
+
+      {/* Decline Button */}
+      <button
+        type="button"
+        onClick={() => navigate("/thankyou")}
+        className="text-xs font-black text-slate-600 underline underline-offset-4 transition hover:text-slate-900"
+      >
+        No Thanks, I'll attend the Free Masterclass
+      </button>
 
     </div>
+
+  </div>
+
+</div>
   </div>
 </header>
 
