@@ -288,114 +288,119 @@ export default function ManifestationBootcampLanding() {
       <div className="relative z-10 border-b border-slate-200/70 bg-white/75 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-center gap-2 px-4 py-2 text-xs font-extrabold text-slate-700" />
       </div>
+<header className="relative z-10">
+  <div className="mx-auto mb-6 max-w-7xl px-4 sm:px-6">
 
-      <header className="relative z-10">
-        {/* <div className="mx-auto max-w-6xl px-4 pt-6 pb-12 sm:pb-16"> */}
-          <div className="mx-auto mb-8 max-w-7xl px-4 sm:px-6">
- <div className="mx-auto mb-6 max-w-7xl px-4 sm:px-6">
-  <div
-    className="relative overflow-hidden rounded-2xl border border-violet-300/70
-    bg-gradient-to-r from-violet-700 via-purple-600 to-indigo-700
-    px-6 py-3 text-center shadow-[0_20px_60px_-20px_rgba(124,58,237,0.55)]"
-  >
-    {/* soft glow */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_60%)]" />
+    <div className="mx-auto mb-4 max-w-7xl px-4 sm:px-6">
+      <div
+        className="relative overflow-hidden rounded-2xl border border-violet-300/70
+        bg-gradient-to-r from-violet-700 via-purple-600 to-indigo-700
+        px-6 py-3 text-center shadow-[0_20px_60px_-20px_rgba(124,58,237,0.55)]"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_60%)]" />
 
-    {/* urgency text */}
-    <p className="relative text-sm sm:text-base font-black tracking-wide text-white">
-      ⚠️ Wait — Don’t Leave This Page Yet
-    </p>
+        <p className="relative text-sm sm:text-base font-black tracking-wide text-white">
+          ⚠️ Wait — Don’t Leave This Page Yet
+        </p>
 
-    {/* subtext */}
-    <p className="relative mt-0.5 text-xs sm:text-sm font-semibold text-white/95">
-      This <span className="font-bold text-yellow-200">exclusive one-time offer</span> is available only right now.
-      If you close this page, you may <span className="font-bold underline">never see it again.</span>
-    </p>
-  </div>
-</div>
+        <p className="relative mt-0.5 text-xs sm:text-sm font-semibold text-white/95">
+          🎉 You're registered! <span className="font-bold text-yellow-200">Your spot for the</span> Scientific Manifestation Masterclass is confirmed.
+        </p>
+      </div>
+    </div>
 
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="mt-5 text-4xl font-black tracking-tight sm:text-5xl">
-              Master the Art of{" "}
-              <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-                Powerful Manifestation
-              </span>{" "}
-              in Just 5 Days
-            </h1>
+    <div className="mx-auto max-w-3xl text-center">
+      <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
+        Master the Art of{" "}
+        <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+          Powerful Manifestation
+        </span>{" "}
+        in Just 5 Days
+      </h1>
 
-            <p className="mt-4 text-base font-semibold text-slate-700 sm:text-lg">
-              Learn scientifically proven techniques to communicate with the universe,
-              attract abundance, and manifest your dream life — with action-based
-              tasks that deliver real results.
-            </p>
+      <p className="mt-3 text-base font-semibold text-slate-700 sm:text-lg">
+        Learn scientifically proven techniques to communicate with the universe,
+        attract abundance, and manifest your dream life — with action-based
+        tasks that deliver real results.
+      </p>
+    </div>
+
+    <div className="mx-auto mt-6 max-w-5xl">
+
+      <GlowCard>
+
+        <p className="text-center text-lg sm:text-xl font-semibold text-slate-900 mb-2">
+          ✨ Watch This Short Video To Discover How The
+          <span className="text-yellow-500 font-bold"> Manifestation Masterclass </span>
+          Will Transform Your Life
+        </p>
+
+        <div
+          ref={videoWrapperRef}
+          className="relative h-[360px] sm:h-[420px] overflow-hidden rounded-2xl border border-slate-200 bg-black shadow-sm"
+        >
+          <iframe
+            ref={iframeRef}
+            className="absolute inset-0 h-full w-full"
+            src={videoSrc}
+            title="Bootcamp overview video"
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowFullScreen
+          />
+
+          <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2">
+            <button
+              type="button"
+              onClick={toggleMute}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/70 text-white shadow-lg backdrop-blur transition hover:bg-black/85"
+              aria-label={isMuted ? "Unmute video" : "Mute video"}
+            >
+              {isMuted ? (
+                <VolumeX className="h-5 w-5" />
+              ) : (
+                <Volume2 className="h-5 w-5" />
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={handleFullscreen}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/70 text-white shadow-lg backdrop-blur transition hover:bg-black/85"
+              aria-label="Fullscreen video"
+            >
+              <Maximize2 className="h-5 w-5" />
+            </button>
           </div>
 
-          <div className="mx-auto mt-10 max-w-5xl">
-            <GlowCard className="p-4 sm:p-5">
-              <div
-                ref={videoWrapperRef}
-                className="relative aspect-video overflow-hidden rounded-2xl border border-slate-200 bg-black shadow-sm"
-              >
-                <iframe
-                  ref={iframeRef}
-                  className="absolute inset-0 h-full w-full"
-                  src={videoSrc}
-                  title="Bootcamp overview video"
-                  allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-                  allowFullScreen
-                />
-
-                <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={toggleMute}
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/70 text-white shadow-lg backdrop-blur transition hover:bg-black/85"
-                    aria-label={isMuted ? "Unmute video" : "Mute video"}
-                  >
-                    {isMuted ? (
-                      <VolumeX className="h-5 w-5" />
-                    ) : (
-                      <Volume2 className="h-5 w-5" />
-                    )}
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={handleFullscreen}
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/70 text-white shadow-lg backdrop-blur transition hover:bg-black/85"
-                    aria-label="Fullscreen video"
-                  >
-                    <Maximize2 className="h-5 w-5" />
-                  </button>
-                </div>
-
-                <div className="pointer-events-none absolute bottom-4 left-4 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-extrabold text-slate-700 shadow-sm">
-                  {isMuted ? "Video playing • Muted" : "Video playing • Sound ON"}
-                </div>
-              </div>
-
-              <div className="mt-6 flex flex-col items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => window.open(razorpayUrl, "_blank")}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-rose-600 px-6 py-4 text-sm font-black text-white shadow-[0_18px_55px_-35px_rgba(244,63,94,0.6)] transition hover:-translate-y-0.5 hover:bg-rose-700 sm:w-auto"
-                >
-                  Click here to join the bootcamp
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => navigate("/thankyou")}
-                  className="text-xs font-semibold text-slate-600 underline underline-offset-4 transition hover:text-slate-900"
-                >
-                  Already opted in? Check access instructions
-                </button>
-              </div>
-            </GlowCard>
+          <div className="pointer-events-none absolute bottom-4 left-4 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-extrabold text-slate-700 shadow-sm">
+            {isMuted ? "Video playing • Muted" : "Video playing • Sound ON"}
           </div>
         </div>
-      </header>
+
+        <div className="mt-4 flex flex-col items-center gap-2">
+          <button
+            type="button"
+            onClick={() => window.open(razorpayUrl, "_blank")}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-rose-600 px-6 py-4 text-sm font-black text-white shadow-[0_18px_55px_-35px_rgba(244,63,94,0.6)] transition hover:-translate-y-0.5 hover:bg-rose-700 sm:w-auto"
+          >
+            Click here to join the bootcamp
+            <ArrowRight className="h-4 w-4" />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => navigate("/thankyou")}
+            className="text-xs font-semibold text-slate-600 underline underline-offset-4 transition hover:text-slate-900"
+          >
+            Take me to the Thank You page
+          </button>
+        </div>
+
+      </GlowCard>
+
+    </div>
+  </div>
+</header>
 
       <Section>
         <div className="mx-auto max-w-3xl text-center">
@@ -537,7 +542,7 @@ function Section({ children }: { children: React.ReactNode }) {
         <div className="absolute inset-0 bg-gradient-to-b from-white/65 via-white/30 to-transparent" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 py-14 sm:py-16">
+      <div className="relative mx-auto max-w-6xl px-4 py-10 sm:py-12">
         {children}
       </div>
     </section>
@@ -548,13 +553,13 @@ function GlowCard({
   className = "",
   children,
 }: {
-  className?: string;
-  children: React.ReactNode;
+  className?: string
+  children: React.ReactNode
 }) {
   return (
     <div
       className={[
-        "relative overflow-hidden rounded-3xl border border-slate-200 bg-white/85 shadow-[0_18px_70px_-55px_rgba(2,6,23,0.28)] backdrop-blur",
+        "relative overflow-hidden rounded-3xl border border-slate-200 bg-white/90 shadow-[0_18px_60px_-45px_rgba(2,6,23,0.25)] backdrop-blur",
         className,
       ].join(" ")}
     >
@@ -563,11 +568,13 @@ function GlowCard({
         <div className="absolute -bottom-28 right-[-40px] h-72 w-72 rounded-full bg-indigo-500/10 blur-[90px]" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/55 to-white/20" />
       </div>
-      <div className="relative">{children}</div>
+
+      <div className="relative px-4 py-4 sm:px-5 sm:py-5">
+        {children}
+      </div>
     </div>
   );
 }
-
 function ManifestDayCard({
   day,
   title,
