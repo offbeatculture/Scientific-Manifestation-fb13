@@ -17,75 +17,70 @@ import {
 import { useFacebookPixel } from "@/hooks/useFacebookPixel";
 
 const ACCENT_TEXT = "text-violet-700";
-const ACCENT_SOFT_BG_2 = "bg-violet-100/60";
 const ACCENT_ICON = "text-violet-700";
 
 export default function ManifestationBootcampLanding() {
-
-  useFacebookPixel("Purchase-1499", {
-    value: 1499,
-    currency: "INR",
-  });
-const [sessionDate, setSessionDate] = useState("");
-const [sessionTime, setSessionTime] = useState("");
-
-useEffect(() => {
-  const url =
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQTwPzzgnuxnM99svb-wpxDwzfPA-3lZP9cVqLv4hMH0GtKLollq3-tOFZ0jgzug_-vl3zXvo_HBYNs/pub?output=csv&gid=43987342";
-
-  fetch(url)
-    .then((res) => res.text())
-    .then((text) => {
-      const rows = text.split("\n").map((row) => row.split(","));
-
-      console.log(rows); // debug
-
-      const headers = rows[0];
-
-      const columnIndex = headers.findIndex((h) =>
-        h.toLowerCase().includes("5 day")
-      );
-
-      if (columnIndex !== -1 && rows[1]) {
-        const value = rows[1][columnIndex]?.replace(/"/g, "").trim();
-
-        if (value) {
-          const parts = value.split(" ");
-
-          const date = parts.slice(0, 3).join(" ");
-          const time = parts.slice(3).join(" ");
-
-          setSessionDate(date);
-          setSessionTime(time);
-        }
-      }
-    })
-    .catch((err) => console.error("Fetch error:", err));
-}, []);
-
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
+  useFacebookPixel();
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("trackCustom", "Purchase-1499", {
+        value: 1499,
+        currency: "INR",
+      });
+    }
+  }, []);
+
+  const [sessionDate, setSessionDate] = useState("");
+  const [sessionTime, setSessionTime] = useState("");
   const [openFaq, setOpenFaq] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
 
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const videoWrapperRef = useRef<HTMLDivElement | null>(null);
-  const optinRef = useRef<HTMLDivElement | null>(null);
 
   const YT_ID = "_G4WQgitmyk";
 
-  // ✅ Read values from URL with fallback names
   const name = searchParams.get("name") || "";
   const email = searchParams.get("email") || "";
-  const phone =
-    searchParams.get("phone") ||
-    searchParams.get("contact") ||
-    "";
+  const phone = searchParams.get("phone") || searchParams.get("contact") || "";
   const profession =
-    searchParams.get("profession") ||
-    searchParams.get("status") ||
-    "";
+    searchParams.get("profession") || searchParams.get("status") || "";
+
+  useEffect(() => {
+    const url =
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQTwPzzgnuxnM99svb-wpxDwzfPA-3lZP9cVqLv4hMH0GtKLollq3-tOFZ0jgzug_-vl3zXvo_HBYNs/pub?output=csv&gid=43987342";
+
+    fetch(url)
+      .then((res) => res.text())
+      .then((text) => {
+        const rows = text
+          .split("\n")
+          .map((row) => row.split(",").map((cell) => cell.replace(/"/g, "").trim()));
+
+        const headers = rows[0] || [];
+        const columnIndex = headers.findIndex((h) =>
+          h.toLowerCase().includes("5 day")
+        );
+
+        if (columnIndex !== -1 && rows[1]) {
+          const value = rows[1][columnIndex];
+
+          if (value) {
+            const parts = value.split(" ");
+            const date = parts.slice(0, 3).join(" ");
+            const time = parts.slice(3).join(" ");
+
+            setSessionDate(date);
+            setSessionTime(time);
+          }
+        }
+      })
+      .catch((err) => console.error("Fetch error:", err));
+  }, []);
 
   useEffect(() => {
     console.log("OTO PAGE PARAMS:", {
@@ -102,10 +97,6 @@ useEffect(() => {
   )}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(
     phone
   )}&profession=${encodeURIComponent(profession)}`;
-
-  const scrollToOptin = () => {
-    optinRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   const toggleMute = () => {
     if (!iframeRef.current?.contentWindow) return;
@@ -148,19 +139,19 @@ useEffect(() => {
       },
       {
         q: "Will I get lifetime access?",
-        a: "You’ll get access to the core materials and updates during your access window (based on your offer). Save/download any included resources where available.",
+        a: "You’ll get access to the core materials and updates during your access window based on your offer.",
       },
       {
         q: "What if I’ve tried manifesting and it didn’t work?",
-        a: "This program focuses on alignment + action: clearing blocks, installing new beliefs, and building a repeatable system you can use for any goal.",
+        a: "This program focuses on alignment plus action: clearing blocks, installing new beliefs, and building a repeatable system you can use for any goal.",
       },
       {
         q: "Is there a community?",
-        a: "If your offer includes it, you’ll receive community access details after checkout/opt-in.",
+        a: "If your offer includes it, you’ll receive community access details after checkout.",
       },
       {
         q: "Can I do this while busy?",
-        a: "Yes—this is designed for real life. Even if you miss a day, you can catch up and still complete the full 5-day transformation.",
+        a: "Yes. This is designed for real life, and even if you miss a day, you can catch up.",
       },
     ],
     []
@@ -174,7 +165,7 @@ useEffect(() => {
         points: [
           "Master the 3 principles of the universal language",
           "Correct the mistakes blocking your manifestations",
-          "The Triad Formula: shift into powerful vibration in 120 seconds — scientifically tested",
+          "The Triad Formula: shift into powerful vibration in 120 seconds",
           "Stop manifesting randomly and start manifesting consciously",
         ],
       },
@@ -185,38 +176,37 @@ useEffect(() => {
           "The 3 laws of money manifestation anyone can implement",
           "3 powerful money-making mindsets for those already earning",
           "Understand abundance vs. scarcity once and for all",
-          "Jim Carrey's money attraction task for manifesting large sums",
-          "Live mind programming to replace old money beliefs",
+          "Replace old money beliefs with new empowering patterns",
         ],
       },
       {
         day: "Day 3",
         title: "The Continuum Method — Vision Board 2.0",
         points: [
-          "Why traditional vision boards fail and what to do instead",
-          "The Continuum Method makes your vision board 10x more powerful",
-          "Drag-and-drop template to design your dream life",
-          "Manifest things 10 times faster with this secret technique",
+          "Why traditional vision boards fail",
+          "Make your vision board 10x more powerful",
+          "Design your dream life with a simple template",
+          "Manifest faster with this secret technique",
         ],
       },
       {
         day: "Day 4",
         title: "The DVAR Framework — Beyond Visualization",
         points: [
-          "Why visualization alone fails and what comes next",
-          "3 powerful actualization techniques (Snapshot Experience, Simulated Moments, Virtual Scaling)",
-          "Apply to relationships, health, career, money — anything",
-          "Real stories: 3-year stuck transfers manifested in 2 weeks",
+          "Why visualization alone fails",
+          "3 powerful actualization techniques",
+          "Apply it to relationships, health, career, and money",
+          "See real-world results much faster",
         ],
       },
       {
         day: "Day 5",
         title: "Dissociative Hypnotic Visualization",
         points: [
-          "Combines NLP, mild hypnosis, and a 100-year-old 4th dimension technique",
-          "Previously shared only with 1-on-1 coaching clients (₹6 Lakh/year)",
-          "The single most powerful visualization for manifesting abundance",
-          "You'll receive the full audio for lifetime daily practice",
+          "Combines NLP, mild hypnosis, and 4th-dimension techniques",
+          "Previously shared only with premium clients",
+          "The most powerful visualization for abundance",
+          "You’ll receive the full audio for lifetime practice",
         ],
       },
     ],
@@ -228,25 +218,25 @@ useEffect(() => {
       {
         icon: Gift,
         title: "Perfect Day Visualization Audio",
-        desc: "A 7-minute guided practice where you live one full day of your dream life — every morning.",
+        desc: "A 7-minute guided practice where you live one full day of your dream life.",
         value: "Worth ₹2,000",
       },
       {
         icon: Sparkles,
         title: "Delete Procrastination Audio",
-        desc: "Mind-programming affirmations to destroy laziness and ignite daily action toward your dreams.",
+        desc: "Affirmations to destroy laziness and ignite action.",
         value: "Worth ₹3,000",
       },
       {
         icon: CalendarDays,
         title: "Delete Money Blocks Audio",
-        desc: "Remove deep-rooted scarcity beliefs and reprogram your mind for unlimited abundance.",
+        desc: "Remove deep-rooted scarcity beliefs and reprogram abundance.",
         value: "Worth ₹2,000",
       },
       {
         icon: ShieldCheck,
         title: "22-Min Hypnotic Visualization",
-        desc: "Ankit's secret NLP-powered 4th-dimension manifestation practice — separately available as a bonus.",
+        desc: "A powerful NLP-based abundance practice.",
         value: "Worth ₹3,000",
       },
     ],
@@ -258,7 +248,7 @@ useEffect(() => {
       {
         name: "Bootcamp Student",
         quote:
-          "I manifested recovery of ₹3 lakh rupees in the last two days! Money that was stuck for months finally came through.",
+          "I manifested recovery of ₹3 lakh rupees in the last two days. Money that was stuck for months finally came through.",
       },
       {
         name: "Priyanka",
@@ -268,37 +258,22 @@ useEffect(() => {
       {
         name: "Bootcamp Student",
         quote:
-          "I manifested ₹10,000 yesterday and today I got ₹1,500 more through money manifestation techniques!",
+          "I manifested ₹10,000 yesterday and ₹1,500 more today through the money manifestation techniques.",
       },
       {
         name: "Bootcamp Student",
         quote:
-          "I manifested ₹15,000 in the stock market today — which was unusual for me. Usually not able to make that much in a day!",
+          "I manifested ₹15,000 in the stock market today, which was unusual for me.",
       },
       {
         name: "Bootcamp Student",
         quote:
-          "I manifested 3 job interviews this week! I was struggling to even get callbacks before this training.",
+          "I manifested 3 job interviews this week. I was struggling to get callbacks before this training.",
       },
       {
         name: "Bootcamp Student",
         quote:
-          "I improved my IELTS exam score by 2-3 bands in just three days. It really works for studies too!",
-      },
-      {
-        name: "Nikkitasha's Story",
-        quote:
-          "She was trying to get transferred to Delhi for 3 years. After doing the Simulated Moments technique, within 2 weeks the mutual transfer was approved!",
-      },
-      {
-        name: "Bootcamp Student",
-        quote:
-          "I manifested ₹60,000 for my daughter's education. Additionally got ₹3.5 lakh in orders in the last 2 days!",
-      },
-      {
-        name: "Bootcamp Student",
-        quote:
-          "I manifested ₹25,000 today. I'm becoming more positive every single day thanks to this training.",
+          "I improved my IELTS exam score by 2 to 3 bands in just three days.",
       },
     ],
     []
@@ -312,182 +287,121 @@ useEffect(() => {
   }&controls=0&rel=0&modestbranding=1&playsinline=1&fs=0&iv_load_policy=3&disablekb=1`;
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-white via-violet-50/50 to-white text-slate-900">
-      <div className="pointer-events-none fixed inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(15,23,42,0.06)_1px,transparent_0)] [background-size:22px_22px]" />
-        <div className="absolute -top-48 left-1/2 h-[720px] w-[720px] -translate-x-1/2 rounded-full bg-violet-500/12 blur-[150px]" />
-        <div className="absolute top-48 right-[-260px] h-[680px] w-[680px] rounded-full bg-fuchsia-500/10 blur-[160px]" />
-        <div className="absolute bottom-[-320px] left-[-260px] h-[760px] w-[760px] rounded-full bg-indigo-500/10 blur-[170px]" />
-        <div className="absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-white/85 to-transparent" />
-      </div>
-
-      <div className="relative z-10 border-b border-slate-200/70 bg-white/75 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-center gap-2 px-4 py-2 text-xs font-extrabold text-slate-700" />
-      </div>
-<header className="relative z-10">
-  <div className="mx-auto mb-6 max-w-7xl px-4 sm:px-6">
-
-    <div className="mx-auto mb-4 max-w-7xl px-4 sm:px-6">
-      <div
-        className="relative overflow-hidden rounded-2xl border border-violet-300/70
-        bg-gradient-to-r from-violet-700 via-purple-600 to-indigo-700
-        px-6 py-3 text-center shadow-[0_20px_60px_-20px_rgba(124,58,237,0.55)]"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_60%)]" />
-
-        <p className="relative text-sm sm:text-base font-black tracking-wide text-white">
-          ⚠️ Wait — Don’t Leave This Page Yet
-        </p>
-
-        <p className="relative mt-0.5 text-xs sm:text-sm font-semibold text-white/95">
-          🎉 You're registered! <span className="font-bold text-yellow-200">Your spot for the</span> Scientific Manifestation Masterclass is confirmed.
-        </p>
-      </div>
+    <div className="min-h-screen bg-[#ebe4f5] text-slate-900">
+ <header className="relative overflow-hidden">
+  <div className="bg-[#1f1b4f] px-4 py-4 text-center">
+    <div className="mx-auto max-w-3xl">
+      <p className="text-lg font-bold text-white sm:text-2xl">
+        🎉 You&apos;re registered!
+      </p>
+      <p className="mt-1 text-base font-medium text-white sm:text-xl">
+        Your spot for the Scientific Manifestation Masterclass is confirmed.
+      </p>
     </div>
-
-    <div className="mx-auto max-w-3xl text-center">
-      <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">
-        But before  you go {" "}
-        <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-          I have Something 
-        </span>{" "}
-        Special for you
-      </h1>
-
-      {/* <p className="mt-3 text-base font-semibold text-slate-700 sm:text-lg">
-        Learn scientifically proven techniques to communicate with the universe,
-        attract abundance, and manifest your dream life — with action-based
-        tasks that deliver real results.
-      </p> */}
-    </div>
-
-<div className="mx-auto mt-6 max-w-5xl">
-
-  <div>
-
-    <p className="text-center text-lg sm:text-xl font-semibold text-slate-900 mb-2">
-      ✨ Watch This Short Video To Discover How The
-      <span className="text-yellow-500 font-bold"> Manifestation Masterclass </span>
-      Will Transform Your Life
-    </p>
-
-    <div
-      ref={videoWrapperRef}
-      className="relative h-[360px] sm:h-[420px] overflow-hidden rounded-2xl border border-slate-200 bg-black shadow-sm"
-    >
-      <iframe
-        ref={iframeRef}
-        className="absolute inset-0 h-full w-full"
-        src={videoSrc}
-        title="Bootcamp overview video"
-        allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-        allowFullScreen
-      />
-
-      <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2">
-        <button
-          type="button"
-          onClick={toggleMute}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/70 text-white shadow-lg backdrop-blur transition hover:bg-black/85"
-          aria-label={isMuted ? "Unmute video" : "Mute video"}
-        >
-          {isMuted ? (
-            <VolumeX className="h-5 w-5" />
-          ) : (
-            <Volume2 className="h-5 w-5" />
-          )}
-        </button>
-
-        <button
-          type="button"
-          onClick={handleFullscreen}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/70 text-white shadow-lg backdrop-blur transition hover:bg-black/85"
-          aria-label="Fullscreen video"
-        >
-          <Maximize2 className="h-5 w-5" />
-        </button>
-      </div>
-
-      <div className="pointer-events-none absolute bottom-4 left-4 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-extrabold text-slate-700 shadow-sm">
-        {isMuted ? "Video playing • Muted" : "Video playing • Sound ON"}
-      </div>
-    </div>
-
-    {/* MASTERCLASS DATE & TIME */}
-    <div className="mt-6 flex justify-center">
-      <div
-        className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8
-        rounded-xl border border-violet-200 bg-white px-6 py-3 shadow-sm"
-      >
-
-        {/* Date */}
-        <div className="flex flex-col items-center sm:items-start leading-tight">
-          <span className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
-            Date
-          </span>
-          <span className="text-sm sm:text-base font-bold text-violet-700">
-            {sessionDate}
-          </span>
-        </div>
-
-        {/* Divider */}
-        <div className="hidden sm:block h-8 w-px bg-slate-200"></div>
-
-        {/* Time */}
-        <div className="flex flex-col items-center sm:items-start leading-tight">
-          <span className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
-            Time
-          </span>
-          <span className="text-sm sm:text-base font-bold text-indigo-700">
-            {sessionTime}
-          </span>
-        </div>
-
-      </div>
-    </div>
-
-    <div className="mt-4 flex flex-col items-center gap-2">
-
-      {/* Upgrade Button */}
-      <button
-        type="button"
-        onClick={() => window.open(razorpayUrl, "_blank")}
-        className="inline-flex w-full max-w-md flex-col items-center justify-center rounded-full
-        px-6 py-3 sm:px-7 sm:py-3.5 text-center
-        bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600
-        text-white font-black
-        shadow-[0_18px_50px_-20px_rgba(124,58,237,0.6)]
-        transition hover:scale-[1.02] hover:brightness-110"
-      >
-        <span className="text-sm sm:text-base">
-          YES — Upgrade My Registration To The Bootcamp
-        </span>
-
-        <span className="text-[11px] sm:text-xs font-semibold opacity-90">
-          Lock in ₹1,499 before this offer disappears →
-        </span>
-      </button>
-
-      {/* Decline Button */}
-      <button
-        type="button"
-        onClick={() => navigate("/thankyou")}
-        className="text-xs font-black text-slate-600 underline underline-offset-4 transition hover:text-slate-900"
-      >
-        No Thanks, I'll attend the Free Masterclass
-      </button>
-
-    </div>
-
   </div>
 
+  <div className="px-4 pt-5 pb-5">
+    <div className="mx-auto max-w-3xl text-center">
+      <p className="text-base font-bold uppercase text-black sm:text-xl">
+        But before you go
+      </p>
+
+      <h1 className="mt-1 text-2xl font-bold text-black sm:text-4xl">
+        I Have Something
+      </h1>
+
+      <h2 className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-2xl font-bold text-transparent sm:text-4xl">
+        Special For YOU
+      </h2>
+    </div>
+
+    <div className="mx-auto mt-5 max-w-3xl rounded-xl border border-black/10 bg-white p-3 shadow-md">
+      <div className="rounded-lg bg-white p-3">
+        <p className="text-center text-lg font-bold text-[#1f1b4f] sm:text-2xl">
+          IMPORTANT! Watch This Short Video
+        </p>
+
+        <p className="mt-1 text-center text-xs font-semibold text-[#1f1b4f] sm:text-base">
+          (Click on Unmute Button)
+        </p>
+<div
+  ref={videoWrapperRef}
+  className="relative mt-3 h-[200px] overflow-hidden rounded-lg bg-black sm:h-[380px]"
+>
+  <iframe
+    ref={iframeRef}
+    className="absolute inset-0 h-full w-full"
+    src={videoSrc}
+    title="Bootcamp overview video"
+    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+    allowFullScreen
+  />
+
+  {/* Video Controls */}
+  <div className="absolute bottom-3 right-3 z-20 flex items-center gap-2">
+    <button
+      type="button"
+      onClick={toggleMute}
+      className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white shadow hover:bg-black/90"
+      aria-label={isMuted ? "Unmute video" : "Mute video"}
+    >
+      {isMuted ? (
+        <VolumeX className="h-4 w-4" />
+      ) : (
+        <Volume2 className="h-4 w-4" />
+      )}
+    </button>
+
+    <button
+      type="button"
+      onClick={handleFullscreen}
+      className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white shadow hover:bg-black/90"
+      aria-label="Fullscreen video"
+    >
+      <Maximize2 className="h-4 w-4" />
+    </button>
+  </div>
 </div>
+
+        <div className="mt-4 text-center">
+          <p className="text-base font-bold text-black sm:text-xl">
+            Date &amp; Time :
+            <span className="ml-2">
+              {sessionDate || "Loading..."} {sessionTime || ""}
+            </span>
+          </p>
+        </div>
+
+        <div className="mt-5 flex flex-col items-center gap-2">
+          <button
+            type="button"
+            onClick={() => window.open(razorpayUrl, "_blank")}
+            className="w-full max-w-xl rounded-full bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 px-5 py-2.5 shadow-md transition hover:scale-[1.01]"
+          >
+            <div className="text-base font-bold text-white sm:text-lg">
+              YES — Upgrade My Registration To The Bootcamp
+            </div>
+            <div className="text-xs text-white/95 sm:text-sm">
+              Lock in ₹1,499 before this offer disappears →
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => navigate("/thankyou")}
+            className="text-xs font-semibold text-slate-700 underline underline-offset-4 hover:text-slate-900 sm:text-sm"
+          >
+            No Thanks, I&apos;ll attend the Free Masterclass
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
       <Section>
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mt-5 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
             What you’ll master in{" "}
             <span className={`${ACCENT_TEXT} font-black`}>
               5 transformational days
@@ -517,7 +431,7 @@ useEffect(() => {
 
       <Section>
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mt-5 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
             4 Powerful Audio Bonuses{" "}
             <span className={`${ACCENT_TEXT} font-black`}>₹10,000+</span> — yours
             free
@@ -538,7 +452,7 @@ useEffect(() => {
 
       <Section>
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mt-5 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
             Hundreds of students are manifesting{" "}
             <span className={`${ACCENT_TEXT} font-black`}>
               incredible results
@@ -560,7 +474,7 @@ useEffect(() => {
 
       <Section>
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mt-5 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
             Frequently asked questions
           </h2>
 
@@ -605,20 +519,13 @@ useEffect(() => {
           })}
         </div>
       </Section>
-
-      {/* <section
-        ref={optinRef}
-        className="relative z-10 overflow-hidden border-t border-slate-200/70"
-      >
-        <div className="relative mx-auto max-w-6xl px-4 py-16" />
-      </section> */}
     </div>
   );
 }
 
 function Section({ children }: { children: React.ReactNode }) {
   return (
-    <section className="relative z-10 overflow-hidden border-t border-slate-200/70">
+    <section className="relative overflow-hidden border-t border-slate-200/70 bg-white/40">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-44 left-1/2 h-[580px] w-[580px] -translate-x-1/2 rounded-full bg-violet-500/10 blur-[160px]" />
         <div className="absolute bottom-[-240px] right-[-180px] h-[620px] w-[620px] rounded-full bg-indigo-500/10 blur-[170px]" />
@@ -632,32 +539,6 @@ function Section({ children }: { children: React.ReactNode }) {
   );
 }
 
-function GlowCard({
-  className = "",
-  children,
-}: {
-  className?: string
-  children: React.ReactNode
-}) {
-  return (
-    <div
-      className={[
-        "relative overflow-hidden rounded-3xl border border-slate-200 bg-white/90 shadow-[0_18px_60px_-45px_rgba(2,6,23,0.25)] backdrop-blur",
-        className,
-      ].join(" ")}
-    >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-violet-500/10 blur-[80px]" />
-        <div className="absolute -bottom-28 right-[-40px] h-72 w-72 rounded-full bg-indigo-500/10 blur-[90px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/55 to-white/20" />
-      </div>
-
-      <div className="relative px-4 py-4 sm:px-5 sm:py-5">
-        {children}
-      </div>
-    </div>
-  );
-}
 function ManifestDayCard({
   day,
   title,
@@ -699,7 +580,7 @@ function ManifestDayCard({
         {points.map((p) => (
           <div
             key={p}
-            className="flex items-start gap-3 text-sm font-semibold text-slate-800 leading-relaxed"
+            className="flex items-start gap-3 text-sm font-semibold leading-relaxed text-slate-800"
           >
             <span className="mt-[2px] inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-violet-100/60 ring-1 ring-violet-700/15">
               <CheckCircle2 className="h-4 w-4 text-violet-700" />
