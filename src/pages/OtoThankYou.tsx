@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useFacebookPixel } from "../hooks/useFacebookPixel";
 
 const FREE_WA_GROUP = "http://join.ankitneerav.com/smm-wap-fb";
-const PAID_WA_GROUP = "https://chat.whatsapp.com/YOUR-PAID-GROUP-LINK";
+const PAID_WA_GROUP = "join.ankitneerav.com/5day-wap-oto";
 
 const MASTERCLASS_DATE = "25 June, 7:00 PM IST"; // change if needed
 
@@ -52,7 +52,7 @@ export default function OtoThankYou() {
 
         <p className="mt-3 text-sm text-ink-600">
           You are registered for <br />
-          <strong> the Free & 5 day class.</strong>.
+          <strong> Scientific Manifestation Masterclass & the 5 day Advanced manifestation Bootcamp</strong>.
         </p>
 
         {/* STEP 1 */}
@@ -87,8 +87,9 @@ export default function OtoThankYou() {
           </h2>
 
           <p className="mt-2 text-sm text-green-800">
-            This private group is only for paid students. Important bootcamp
-            updates, recordings, and materials will be shared here.
+             {/* Join the WhatsApp group to receive reminders and updates for
+            the masterclass. */}
+            Join the WhatsApp group for 5 Day Advanced Manifestation Bootcamp Group
           </p>
 
           {/* <p className="mt-2 text-xs font-semibold text-green-700">

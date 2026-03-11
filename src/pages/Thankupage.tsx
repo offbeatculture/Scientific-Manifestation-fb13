@@ -56,7 +56,7 @@ export default function ThankYouFb() {
 
         <p className="mt-3 text-sm text-ink-600">
           You’ve successfully booked your seat for the <br />
-          <strong>Manifest Your Dream Life – Masterclass</strong>.
+          <strong> Scientific Manifestation Masterclass</strong>.
         </p>
 
         <div className="mt-6">

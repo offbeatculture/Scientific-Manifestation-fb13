@@ -301,99 +301,103 @@ export default function ManifestationBootcampLanding() {
   </div>
 
   <div className="px-4 pt-5 pb-5">
-    <div className="mx-auto max-w-3xl text-center">
-      <p className="text-base font-bold uppercase text-black sm:text-xl">
-        But before you go
-      </p>
+  <div className="px-4 pt-5 pb-5">
+  <div className="px-4 pt-5 pb-5">
+  <div className="mx-auto max-w-5xl text-center">
+    <p className="text-lg font-bold uppercase text-black sm:text-xl">
+      But before you go
+    </p>
 
-      <h1 className="mt-1 text-2xl font-bold text-black sm:text-4xl">
-        I Have Something
-      </h1>
-
-      <h2 className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-2xl font-bold text-transparent sm:text-4xl">
-        Special For YOU
-      </h2>
-    </div>
-
-    <div className="mx-auto mt-5 max-w-3xl rounded-xl border border-black/10 bg-white p-3 shadow-md">
-      <div className="rounded-lg bg-white p-3">
-        <p className="text-center text-lg font-bold text-[#1f1b4f] sm:text-2xl">
-          IMPORTANT! Watch This Short Video
-        </p>
-
-        <p className="mt-1 text-center text-xs font-semibold text-[#1f1b4f] sm:text-base">
-          (Click on Unmute Button)
-        </p>
-<div
-  ref={videoWrapperRef}
-  className="relative mt-3 h-[200px] overflow-hidden rounded-lg bg-black sm:h-[380px]"
->
-  <iframe
-    ref={iframeRef}
-    className="absolute inset-0 h-full w-full"
-    src={videoSrc}
-    title="Bootcamp overview video"
-    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-    allowFullScreen
-  />
-
-  {/* Video Controls */}
-  <div className="absolute bottom-3 right-3 z-20 flex items-center gap-2">
-    <button
-      type="button"
-      onClick={toggleMute}
-      className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white shadow hover:bg-black/90"
-      aria-label={isMuted ? "Unmute video" : "Mute video"}
-    >
-      {isMuted ? (
-        <VolumeX className="h-4 w-4" />
-      ) : (
-        <Volume2 className="h-4 w-4" />
-      )}
-    </button>
-
-    <button
-      type="button"
-      onClick={handleFullscreen}
-      className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white shadow hover:bg-black/90"
-      aria-label="Fullscreen video"
-    >
-      <Maximize2 className="h-4 w-4" />
-    </button>
+    <h1 className="mt-1 text-3xl font-bold sm:text-4xl">
+      <span className="text-black">I Have Something</span>
+      <br className="sm:hidden" />
+      <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+        {" "}Special For YOU
+      </span>
+    </h1>
   </div>
 </div>
+</div>
+    {/* VIDEO BOX ONLY */}
+    <div className="mx-auto mt-5 max-w-3xl rounded-xl border border-black/10 bg-white p-3 shadow-md">
+      <p className="text-center text-lg font-bold text-[#1f1b4f] sm:text-2xl">
+        IMPORTANT! Watch This Short Video
+      </p>
 
-        <div className="mt-4 text-center">
-          <p className="text-base font-bold text-black sm:text-xl">
-            Date &amp; Time :
-            <span className="ml-2">
-              {sessionDate || "Loading..."} {sessionTime || ""}
-            </span>
-          </p>
-        </div>
+      <p className="mt-1 text-center text-xs font-semibold text-[#1f1b4f] sm:text-base">
+        (Click on Unmute Button)
+      </p>
 
-        <div className="mt-5 flex flex-col items-center gap-2">
+      <div
+        ref={videoWrapperRef}
+        className="relative mt-3 h-[200px] overflow-hidden rounded-lg bg-black sm:h-[380px]"
+      >
+        <iframe
+          ref={iframeRef}
+          className="absolute inset-0 h-full w-full"
+          src={videoSrc}
+          title="Bootcamp overview video"
+          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          allowFullScreen
+        />
+
+        {/* Video Controls */}
+        <div className="absolute bottom-3 right-3 z-20 flex items-center gap-2">
           <button
             type="button"
-            onClick={() => window.open(razorpayUrl, "_blank")}
-            className="w-full max-w-xl rounded-full bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 px-5 py-2.5 shadow-md transition hover:scale-[1.01]"
+            onClick={toggleMute}
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white shadow hover:bg-black/90"
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
           >
-            <div className="text-base font-bold text-white sm:text-lg">
-              YES — Upgrade My Registration To The Bootcamp
-            </div>
-            <div className="text-xs text-white/95 sm:text-sm">
-              Lock in ₹1,499 before this offer disappears →
-            </div>
+            {isMuted ? (
+              <VolumeX className="h-4 w-4" />
+            ) : (
+              <Volume2 className="h-4 w-4" />
+            )}
           </button>
 
           <button
             type="button"
-            onClick={() => navigate("/thankyou")}
-            className="text-xs font-semibold text-slate-700 underline underline-offset-4 hover:text-slate-900 sm:text-sm"
+            onClick={handleFullscreen}
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white shadow hover:bg-black/90"
+            aria-label="Fullscreen video"
           >
-            No Thanks, I&apos;ll attend the Free Masterclass
+            <Maximize2 className="h-4 w-4" />
           </button>
         </div>
+      </div>
+    </div>
+
+    {/* DATE + BUTTONS OUTSIDE BOX */}
+    <div className="mx-auto mt-4 max-w-3xl text-center">
+      <p className="text-base font-bold text-black sm:text-xl">
+        Date &amp; Time :
+        <span className="ml-2">
+          {sessionDate || "Loading..."} {sessionTime || ""}
+        </span>
+      </p>
+
+      <div className="mt-5 flex flex-col items-center gap-2">
+        <button
+          type="button"
+          onClick={() => window.open(razorpayUrl, "_blank")}
+          className="w-full max-w-xl rounded-full bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 px-5 py-2.5 shadow-md transition hover:scale-[1.01]"
+        >
+          <div className="text-base font-bold text-white sm:text-lg">
+            YES — Upgrade My Registration To The Bootcamp
+          </div>
+          <div className="text-xs text-white/95 sm:text-sm">
+            Lock in ₹1,499 before this offer disappears →
+          </div>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => navigate("/thankyou")}
+          className="text-xs font-semibold text-slate-700 underline underline-offset-4 hover:text-slate-900 sm:text-sm"
+        >
+          No Thanks, I&apos;ll attend the Free Masterclass
+        </button>
       </div>
     </div>
   </div>
