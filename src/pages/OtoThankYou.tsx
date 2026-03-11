@@ -2,7 +2,10 @@
 import { useEffect } from "react";
 import { useFacebookPixel } from "../hooks/useFacebookPixel";
 
-const WA_GROUP_LINK = "http://join.ankitneerav.com/smm-wap-fb";
+const FREE_WA_GROUP = "http://join.ankitneerav.com/smm-wap-fb";
+const PAID_WA_GROUP = "https://chat.whatsapp.com/YOUR-PAID-GROUP-LINK";
+
+const MASTERCLASS_DATE = "25 June, 7:00 PM IST"; // change if needed
 
 export default function OtoThankYou() {
   useFacebookPixel();
@@ -15,7 +18,7 @@ export default function OtoThankYou() {
     if (meta) {
       meta.setAttribute(
         "content",
-        "Thank you for purchasing the 5-Day Manifestation Bootcamp with Ankit Neerav. Join the WhatsApp group now to get access updates, reminders, and next steps."
+        "Thank you for purchasing the 5-Day Manifestation Bootcamp with Ankit Neerav. Join the WhatsApp groups to get access updates, reminders, and next steps."
       );
     }
 
@@ -41,51 +44,72 @@ export default function OtoThankYou() {
         />
       </noscript>
 
-      <div className="w-full max-w-md rounded-3xl border border-aura-100 bg-white shadow-xl p-6 sm:p-8 text-center">
-        <div className="relative aspect-video w-full overflow-hidden rounded-2xl shadow-md">
-          <iframe
-            src="https://www.youtube.com/embed/FqA9KP050eg"
-            title="Purchase Thank You Video"
-            className="h-full w-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
+      <div className="w-full max-w-lg rounded-3xl border border-aura-100 bg-white shadow-xl p-6 sm:p-8 text-center">
 
-        <h1 className="mt-6 text-2xl font-bold text-aura-800">
+        <h1 className="text-2xl font-bold text-aura-800">
           🎉 Payment Successful!
         </h1>
 
         <p className="mt-3 text-sm text-ink-600">
-          Thank you for purchasing the <br />
-          <strong>5-Day Manifestation Bootcamp</strong>.
+          You are registered for <br />
+          <strong> the Free & 5 day class.</strong>.
         </p>
 
-        <div className="mt-4 rounded-2xl bg-green-50 border border-green-100 p-4 text-left">
-          <p className="text-sm font-semibold text-green-800">
-            Your seat is confirmed.
-          </p>
-          <p className="mt-1 text-sm text-green-700">
-            Join the WhatsApp group now to receive access details, reminders,
-            bonus updates, and all next steps.
-          </p>
-        </div>
+        {/* STEP 1 */}
+        <div className="mt-6 rounded-2xl border border-blue-100 bg-blue-50 p-5 text-left">
+          <h2 className="text-sm font-bold text-blue-900">
+           Join the Free Masterclass WhatsApp Group
+          </h2>
 
-        <div className="mt-6">
+          <p className="mt-2 text-sm text-blue-800">
+            Join the free WhatsApp group to receive reminders and updates for
+            the masterclass.
+          </p>
+
+          {/* <p className="mt-2 text-xs font-semibold text-blue-700">
+            Masterclass Date: {MASTERCLASS_DATE}
+          </p> */}
+
           <a
-            href={WA_GROUP_LINK}
+            href={FREE_WA_GROUP}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block w-full rounded-2xl bg-green-600 px-6 py-3 font-medium text-white shadow transition hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300"
+            className="mt-3 inline-block w-full rounded-xl bg-blue-600 px-5 py-3 text-center text-sm font-semibold text-white shadow hover:bg-blue-700"
           >
-            Join WhatsApp Group
+            Join Free WhatsApp Group
           </a>
         </div>
 
-        <p className="mt-4 text-xs text-gray-500">
-          Important: Please join the WhatsApp group to avoid missing your access
-          instructions.
-        </p>
+        {/* STEP 2 */}
+        <div className="mt-4 rounded-2xl border border-green-100 bg-green-50 p-5 text-left">
+          <h2 className="text-sm font-bold text-green-900">
+             Join the 5 Day Advanced Manifestation Bootcamp Group
+          </h2>
+
+          <p className="mt-2 text-sm text-green-800">
+            This private group is only for paid students. Important bootcamp
+            updates, recordings, and materials will be shared here.
+          </p>
+
+          {/* <p className="mt-2 text-xs font-semibold text-green-700">
+            Bootcamp Starts: {MASTERCLASS_DATE}
+          </p> */}
+
+          <a
+            href={PAID_WA_GROUP}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-block w-full rounded-xl bg-green-600 px-5 py-3 text-center text-sm font-semibold text-white shadow hover:bg-green-700"
+          >
+            Join Bootcamp WhatsApp Group
+          </a>
+        </div>
+
+        {/* <p className="mt-6 text-xs text-gray-500">
+          Important: Please join both WhatsApp groups to receive all updates,
+          reminders, and access instructions.
+        </p> */}
+
       </div>
     </section>
   );
