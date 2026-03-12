@@ -278,17 +278,16 @@ export default function ManifestationBootcampLanding() {
     ],
     []
   );
+const firstRow = days.slice(0, 3);
+const secondRow = days.slice(3);
 
-  const firstRow = days.slice(0, 3);
-  const secondRow = days.slice(3);
-
-  const videoSrc = `https://www.youtube-nocookie.com/embed/${YT_ID}?enablejsapi=1&autoplay=1&mute=${
-    isMuted ? 1 : 0
-  }&controls=0&rel=0&modestbranding=1&playsinline=1&fs=0&iv_load_policy=3&disablekb=1`;
+const videoSrc = `https://fast.wistia.net/embed/iframe/c4u89sadjp?autoplay=1&muted=${
+  isMuted ? "true" : "false"
+}&controlsVisibleOnLoad=false`;
 
   return (
     <div className="min-h-screen bg-[#ebe4f5] text-slate-900">
- <header className="relative overflow-hidden">
+<header className="relative overflow-hidden">
   <div className="bg-[#1f1b4f] px-4 py-4 text-center">
     <div className="mx-auto max-w-3xl">
       <p className="text-lg font-bold text-white sm:text-2xl">
@@ -300,26 +299,24 @@ export default function ManifestationBootcampLanding() {
     </div>
   </div>
 
-  <div className="px-4 pt-5 pb-5">
-  <div className="px-4 pt-5 pb-5">
-  <div className="px-4 pt-5 pb-5">
-  <div className="mx-auto max-w-5xl text-center">
-    <p className="text-lg font-bold uppercase text-black sm:text-xl">
-      But before you go
-    </p>
+  <div className="px-4 pt-1 pb-5">
+    {/* HEADING */}
+    <div className="mx-auto max-w-5xl text-center">
+      <p className="text-lg font-bold uppercase text-black sm:text-xl">
+        But before you go
+      </p>
 
-    <h1 className="mt-1 text-3xl font-bold sm:text-4xl">
-      <span className="text-black">I Have Something</span>
-      <br className="sm:hidden" />
-      <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-        {" "}Special For YOU
-      </span>
-    </h1>
-  </div>
-</div>
-</div>
-    {/* VIDEO BOX ONLY */}
-    <div className="mx-auto mt-5 max-w-3xl rounded-xl border border-black/10 bg-white p-3 shadow-md">
+      <h1 className="mt-0.5 text-3xl font-bold sm:text-4xl">
+        <span className="text-black">I Have Something</span>
+        <br className="sm:hidden" />
+        <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+          {" "}Special For YOU
+        </span>
+      </h1>
+    </div>
+
+    {/* VIDEO BOX */}
+    <div className="mx-auto mt-2 max-w-3xl rounded-xl border border-black/10 bg-white p-3 shadow-md">
       <p className="text-center text-lg font-bold text-[#1f1b4f] sm:text-2xl">
         IMPORTANT! Watch This Short Video
       </p>
@@ -347,7 +344,6 @@ export default function ManifestationBootcampLanding() {
             type="button"
             onClick={toggleMute}
             className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white shadow hover:bg-black/90"
-            aria-label={isMuted ? "Unmute video" : "Mute video"}
           >
             {isMuted ? (
               <VolumeX className="h-4 w-4" />
@@ -360,7 +356,6 @@ export default function ManifestationBootcampLanding() {
             type="button"
             onClick={handleFullscreen}
             className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white shadow hover:bg-black/90"
-            aria-label="Fullscreen video"
           >
             <Maximize2 className="h-4 w-4" />
           </button>
@@ -368,7 +363,7 @@ export default function ManifestationBootcampLanding() {
       </div>
     </div>
 
-    {/* DATE + BUTTONS OUTSIDE BOX */}
+    {/* DATE + BUTTONS */}
     <div className="mx-auto mt-4 max-w-3xl text-center">
       <p className="text-base font-bold text-black sm:text-xl">
         Date &amp; Time :
@@ -402,7 +397,6 @@ export default function ManifestationBootcampLanding() {
     </div>
   </div>
 </header>
-
       <Section>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
