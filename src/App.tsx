@@ -19,9 +19,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/oto" element={<ManifestationBootcampLanding />} />
-          <Route path="/thankyou" element={<ThankYouFb />} />
-          <Route path="/oto-thankyou" element={<OtoThankYou />} />
+          <Route path="/fb13" element={<Index />} />
+          <Route path="/fb13-oto" element={<ManifestationBootcampLanding />} />
+          <Route path="/fb13-ty" element={<ThankYouFb />} />
+          <Route path="/fb13-ty-oto" element={<OtoThankYou />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
