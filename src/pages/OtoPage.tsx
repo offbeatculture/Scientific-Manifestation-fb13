@@ -394,7 +394,7 @@ const videoSrc = `https://fast.wistia.net/embed/iframe/c4u89sadjp?autoplay=1&mut
 
         <button
           type="button"
-          onClick={() => navigate("/fb13-ty-oto")}
+          onClick={() => navigate("/fb13-ty")}
           className="text-xs font-semibold text-slate-700 underline underline-offset-4 hover:text-slate-900 sm:text-sm"
         >
           No Thanks, I&apos;ll attend the Free Masterclass
