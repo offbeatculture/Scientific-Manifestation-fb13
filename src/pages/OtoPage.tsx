@@ -27,7 +27,7 @@ export default function ManifestationBootcampLanding() {
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.fbq) {
-      window.fbq("trackCustom", "Purchase-1499", {
+      window.fbq("trackCustom", "lead", {
         value: 1499,
         currency: "INR",
       });

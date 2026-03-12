@@ -36,7 +36,7 @@ export default function OtoThankYou() {
         value: 1499,
       });
 
-      window.fbq("trackCustom", "OTO-Purchase");
+      window.fbq("trackCustom", "Purchase-1499","Purchase-OTO" ,"Purchase");
     }
 
     fetch(DATA_URL)
