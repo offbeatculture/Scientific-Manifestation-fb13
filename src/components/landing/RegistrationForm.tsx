@@ -21,6 +21,21 @@ const RegistrationForm = () => {
 
   const isPhoneInvalid = form.phone.length > 0 && form.phone.length !== 10;
 
+  // 🔹 GET UTM PARAMETERS
+  const getUTMs = () => {
+    if (typeof window === "undefined") return {};
+
+    const params = new URLSearchParams(window.location.search);
+
+    return {
+      utm_source: params.get("utm_source") || "",
+      utm_medium: params.get("utm_medium") || "",
+      utm_campaign: params.get("utm_campaign") || "",
+      utm_content: params.get("utm_content") || "",
+      utm_term: params.get("utm_term") || "",
+    };
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -38,8 +53,12 @@ const RegistrationForm = () => {
     setMessage(null);
 
     try {
+      const utms = getUTMs();
+
+      // 🔹 PAYLOAD WITH UTMs
       const payload = {
         ...form,
+        ...utms,
         source: "registration_form",
         page: typeof window !== "undefined" ? window.location.href : "",
         timestamp: new Date().toISOString(),
@@ -61,15 +80,17 @@ const RegistrationForm = () => {
         throw new Error(serverText || `Request failed (${res.status})`);
       }
 
+      // 🔹 PASS UTMs TO OTO PAGE
       const query = new URLSearchParams({
         name: form.name,
         email: form.email,
         phone: form.phone,
         reason: form.reason,
         profession: form.status,
+        ...utms,
       }).toString();
 
-      window.location.href = `/oto?${query}`;
+      window.location.href = `/fb13-oto?${query}`;
 
       setForm({
         name: "",
@@ -125,7 +146,7 @@ const RegistrationForm = () => {
               placeholder="Full Name"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-400/30"
+              className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3"
             />
 
             <input
@@ -134,39 +155,32 @@ const RegistrationForm = () => {
               placeholder="Email Address"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-400/30"
+              className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3"
             />
 
-            <div>
-              <input
-                type="tel"
-                placeholder="Phone (WhatsApp preferred)"
-                value={form.phone}
-                onChange={(e) => {
-                  const onlyNumbers = e.target.value.replace(/\D/g, "");
-                  setForm({ ...form, phone: onlyNumbers });
-                }}
-                maxLength={10}
-                className={`w-full rounded-lg border bg-gray-50 px-4 py-3 text-gray-900 outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-400/30 ${
-                  isPhoneInvalid ? "border-red-500" : "border-gray-300"
-                }`}
-              />
-
-              {isPhoneInvalid && (
-                <p className="mt-2 text-xs font-medium text-red-500">
-                  Please enter a valid 10-digit number
-                </p>
-              )}
-            </div>
+            <input
+              type="tel"
+              placeholder="Phone (WhatsApp preferred)"
+              value={form.phone}
+              onChange={(e) => {
+                const onlyNumbers = e.target.value.replace(/\D/g, "");
+                setForm({ ...form, phone: onlyNumbers });
+              }}
+              maxLength={10}
+              className={`w-full rounded-lg border px-4 py-3 ${
+                isPhoneInvalid ? "border-red-500" : "border-gray-300"
+              }`}
+            />
 
             <textarea
               rows={4}
               placeholder="Reason For Joining"
               value={form.reason}
               onChange={(e) => setForm({ ...form, reason: e.target.value })}
-              className="w-full resize-none rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 outline-none transition-all duration-300 placeholder:text-gray-400 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-400/30"
+              className="w-full rounded-lg border border-gray-300 px-4 py-3"
             />
 
+            {/* STATUS RADIO */}
             <div>
               <p className="mb-3 font-semibold text-gray-700">
                 Select your current status
@@ -180,10 +194,7 @@ const RegistrationForm = () => {
                   "Student / Recent Graduate",
                   "Other",
                 ].map((option, i) => (
-                  <label
-                    key={i}
-                    className="flex cursor-pointer items-center gap-3"
-                  >
+                  <label key={i} className="flex items-center gap-3">
                     <input
                       type="radio"
                       name="status"
@@ -192,7 +203,7 @@ const RegistrationForm = () => {
                       onChange={(e) =>
                         setForm({ ...form, status: e.target.value })
                       }
-                      className="scale-110 accent-yellow-500"
+                      className="accent-yellow-500"
                     />
                     {option}
                   </label>
@@ -200,29 +211,15 @@ const RegistrationForm = () => {
               </div>
             </div>
 
-            {message && (
-              <div
-                className={`rounded-lg border px-4 py-3 text-sm font-semibold ${
-                  message.type === "ok"
-                    ? "border-green-200 bg-green-50 text-green-700"
-                    : "border-red-200 bg-red-50 text-red-700"
-                }`}
-              >
-                {message.text}
-              </div>
-            )}
-
             <button
               type="submit"
               disabled={loading}
-              className={`w-full rounded-lg bg-gradient-to-r from-yellow-400 to-orange-400 py-3 text-lg font-semibold text-black transition-all duration-300 hover:scale-[1.02] hover:shadow-lg ${
-                loading ? "cursor-not-allowed opacity-70 hover:scale-100" : ""
-              }`}
+              className="w-full rounded-lg bg-gradient-to-r from-yellow-400 to-orange-400 py-3 text-lg font-semibold"
             >
               {loading ? "Submitting..." : "Register Now"}
             </button>
 
-            <p className="mt-2 flex items-center justify-center gap-1.5 text-center text-xs text-gray-500">
+            <p className="mt-2 flex items-center justify-center gap-1 text-xs text-gray-500">
               <Shield className="h-3 w-3" />
               Your information is 100% secure. We never spam.
             </p>
