@@ -129,30 +129,36 @@ export default function ManifestationBootcampLanding() {
 
   const faqs = useMemo(
     () => [
-      {
-        q: "Is this for beginners?",
-        a: "Yes. Each day is structured with simple steps, guided prompts, and practical exercises you can do in 15–30 minutes.",
-      },
-      {
-        q: "How long do I need each day?",
-        a: "Most students complete the daily transformation in 15–30 minutes. If you want to go deeper, you’ll have optional bonus practices too.",
-      },
-      {
-        q: "Will I get lifetime access?",
-        a: "You’ll get access to the core materials and updates during your access window based on your offer.",
-      },
-      {
-        q: "What if I’ve tried manifesting and it didn’t work?",
-        a: "This program focuses on alignment plus action: clearing blocks, installing new beliefs, and building a repeatable system you can use for any goal.",
-      },
-      {
-        q: "Is there a community?",
-        a: "If your offer includes it, you’ll receive community access details after checkout.",
-      },
-      {
-        q: "Can I do this while busy?",
-        a: "Yes. This is designed for real life, and even if you miss a day, you can catch up.",
-      },
+      { q: "Will I get recording?", a: "This is a LIVE-only session and recordings will be shared. Be there live to get the full experience and interact directly with Ankit." },
+  // { q: "Is this for beginners?", a: "Absolutely. Whether you're just starting or have tried manifestation before, this session is designed to work for all levels with a scientific approach." },
+  { q: "What is the duration?", a: "The masterclass is exactly 2 hours — packed with actionable strategies, live exercises, and a complete blueprint you can use immediately." },
+  // { q: "Why is FREE? Is it really going to be FREE?", a: "Yes, 100% free. Ankit believes everyone deserves access to this knowledge. This is a limited-time offer to help as many people as possible." },
+  // { q: "What are the most important things for the Masterclass?", a: "Come with an open mind, a notebook, and a quiet space. That's all you need to make the most of this transformative session." },
+  { q: "Is it live?", a: "Yes! This is a fully live and interactive Zoom session. You'll be able to ask questions and participate in real-time exercises." },
+      // {
+      //   q: "Is this for beginners?",
+      //   a: "Yes. Each day is structured with simple steps, guided prompts, and practical exercises you can do in 15–30 minutes.",
+      // },
+      // {
+      //   q: "How long do I need each day?",
+      //   a: "Most students complete the daily transformation in 15–30 minutes. If you want to go deeper, you’ll have optional bonus practices too.",
+      // },
+      // {
+      //   q: "Will I get lifetime access?",
+      //   a: "You’ll get access to the core materials and updates during your access window based on your offer.",
+      // },
+      // {
+      //   q: "What if I’ve tried manifesting and it didn’t work?",
+      //   a: "This program focuses on alignment plus action: clearing blocks, installing new beliefs, and building a repeatable system you can use for any goal.",
+      // },
+      // {
+      //   q: "Is there a community?",
+      //   a: "If your offer includes it, you’ll receive community access details after checkout.",
+      // },
+      // {
+      //   q: "Can I do this while busy?",
+      //   a: "Yes. This is designed for real life, and even if you miss a day, you can catch up.",
+      // },
     ],
     []
   );
