@@ -30,14 +30,19 @@ export default function OtoThankYou() {
       );
     }
 
-    if (typeof window !== "undefined" && window.fbq) {
-      window.fbq("track", "Purchase", {
-        currency: "INR",
-        value: 1499,
-      });
+  if (typeof window !== "undefined" && window.fbq) {
 
-      window.fbq("trackCustom", "Purchase-1499","Purchase-OTO" ,"Purchase");
-    }
+  window.fbq("trackCustom", "Purchase-OTO", {
+    currency: "INR",
+    value: 1499,
+  });
+
+  window.fbq("trackCustom", "Purchase-1499", {
+    currency: "INR",
+    value: 1499,
+  });
+
+}
 
     fetch(DATA_URL)
       .then((res) => res.text())
