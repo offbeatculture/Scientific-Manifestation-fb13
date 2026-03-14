@@ -2,7 +2,7 @@ import { Atom, Users, Brain, Sparkles, Globe, MessageCircle } from "lucide-react
 import AnimatedSection from "./AnimatedSection";
 
 const features = [
-  { icon: Atom, title: "Test the Vortex in Real-time", desc: "You'll experience manifestation techniques live, not just theory — feel the difference in real-time." },
+  { icon: Atom, title: "Test the Vortex in Real-time", desc: "You'll experience manifestation techniques, not just theory — feel the difference in real-time." },
   { icon: Users, title: "Activate Your Social Will", desc: "Learn why friends and family are silently programming your reality and how to change it." },
   { icon: Brain, title: "Your Brain is a Prayer Machine", desc: "Learn how your mind already manifests 24/7 — and how to reprogram it for what you actually want." },
   { icon: Globe, title: "Experience Global Consciousness", desc: "Tap into the collective energy field and amplify your manifestation power exponentially." },

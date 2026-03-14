@@ -25,7 +25,7 @@ const FinalCTA = () => {
           </h2>
 
           <p className="text-white/50 mb-8 max-w-xl mx-auto leading-relaxed text-sm">
-            Join 1,000+ ambitious individuals in this LIVE Science-Based Manifestation
+            Join 1,000+ ambitious individuals in this Science-Based Manifestation
             Breakthrough with Ankit Neerav. 90 minutes that can change your life — register
             now before seats fill up.
           </p>
@@ -35,7 +35,7 @@ const FinalCTA = () => {
           </button>
 
           <p className="text-white/30 text-xs mt-5">
-            100% Free • Live on Zoom • No replay available
+            100% Free  • No replay available
           </p>
         </AnimatedSection>
       </div>
