@@ -129,7 +129,7 @@ export default function ManifestationBootcampLanding() {
 
   const faqs = useMemo(
     () => [
-      { q: "Will I get recording?", a: "The Bootcamp is for 2 Hour each Day from Monday to Friday." },
+      { q: "Will I get recording?", a: "Yes, Recordings will be shared after the session" },
   // { q: "Is this for beginners?", a: "Absolutely. Whether you're just starting or have tried manifestation before, this session is designed to work for all levels with a scientific approach." },
   { q: "What is the duration?", a: "The Bootcamp is for 2 Hour each Day from Monday to Friday." },
   // { q: "Why is FREE? Is it really going to be FREE?", a: "Yes, 100% free. Ankit believes everyone deserves access to this knowledge. This is a limited-time offer to help as many people as possible." },
