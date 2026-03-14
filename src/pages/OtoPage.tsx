@@ -15,6 +15,7 @@ import {
   Maximize2,
 } from "lucide-react";
 import { useFacebookPixel } from "@/hooks/useFacebookPixel";
+import { time } from "console";
 
 const ACCENT_TEXT = "text-violet-700";
 const ACCENT_ICON = "text-violet-700";
@@ -76,11 +77,16 @@ export default function ManifestationBootcampLanding() {
 
             setSessionDate(date);
             setSessionTime(time);
+
+
           }
         }
       })
       .catch((err) => console.error("Fetch error:", err));
   }, []);
+
+  
+  
 
   useEffect(() => {
     console.log("OTO PAGE PARAMS:", {

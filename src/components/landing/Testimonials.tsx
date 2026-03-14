@@ -37,7 +37,7 @@ const Testimonials = () => (
           Real Breakthroughs
         </h2>
         <p className="text-center text-white/50 mb-10 max-w-2xl mx-auto">
-          What people are saying after attending Ankit's live sessions.
+          What people are saying after attending Ankit's sessions.
         </p>
       </AnimatedSection>
 

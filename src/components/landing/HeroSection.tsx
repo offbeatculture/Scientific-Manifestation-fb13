@@ -72,9 +72,9 @@ const HeroSection = () => {
           >
 
             <div className="flex items-center gap-3 mb-5">
-              <span className="bg-gold/20 text-gold px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
+              {/* <span className="bg-gold/20 text-gold px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
                 <Sparkles className="w-3 h-3" /> Live Masterclass
-              </span>
+              </span> */}
               <span className="text-white/50 text-sm font-medium">
                 Today Only Free
               </span>
@@ -93,9 +93,9 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-wrap gap-5 mb-7 text-white/85 text-sm">
-              <span className="flex items-center gap-2">
+              {/* <span className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-yellow-400" /> Live on Zoom
-              </span>
+              </span> */}
 
               <span className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-yellow-400" /> 90 Minutes
