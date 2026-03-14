@@ -129,14 +129,14 @@ export default function ManifestationBootcampLanding() {
 
   const faqs = useMemo(
     () => [
-      { q: "Will I get recording?", a: "This is a LIVE-only session and recordings will be shared. Be there live to get the full experience and interact directly with Ankit." },
+      { q: "Will I get recording?", a: "The Bootcamp is for 2 Hour each Day from Monday to Friday." },
   // { q: "Is this for beginners?", a: "Absolutely. Whether you're just starting or have tried manifestation before, this session is designed to work for all levels with a scientific approach." },
-  { q: "What is the duration?", a: "The masterclass is exactly 2 hours — packed with actionable strategies, live exercises, and a complete blueprint you can use immediately." },
+  { q: "What is the duration?", a: "The Bootcamp is for 2 Hour each Day from Monday to Friday." },
   // { q: "Why is FREE? Is it really going to be FREE?", a: "Yes, 100% free. Ankit believes everyone deserves access to this knowledge. This is a limited-time offer to help as many people as possible." },
   // { q: "What are the most important things for the Masterclass?", a: "Come with an open mind, a notebook, and a quiet space. That's all you need to make the most of this transformative session." },
-  { q: "Is it live?", a: "Yes! This is a fully live and interactive Zoom session. You'll be able to ask questions and participate in real-time exercises." },
+  { q: "Is it live?", a: "This Masterclass was originally recorded during a live session and is now available as a limited-time broadcast.- You’ll experience the full energy of the original session — just like those who attended it live." },
       // {
-      //   q: "Is this for beginners?",
+      //   q: "Is this for beginners?",w
       //   a: "Yes. Each day is structured with simple steps, guided prompts, and practical exercises you can do in 15–30 minutes.",
       // },
       // {
