@@ -2,12 +2,12 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import AnimatedSection from "./AnimatedSection";
 
 const faqs = [
-  { q: "Will I get recording?", a: "This is a LIVE-only session and recordings will not be shared. Be there live to get the full experience and interact directly with Ankit." },
-  { q: "Is this for beginners?", a: "Absolutely. Whether you're just starting or have tried manifestation before, this session is designed to work for all levels with a scientific approach." },
-  { q: "What is the duration?", a: "The masterclass is exactly 90 minutes — packed with actionable strategies, live exercises, and a complete blueprint you can use immediately." },
-  { q: "Why is FREE? Is it really going to be FREE?", a: "Yes, 100% free. Ankit believes everyone deserves access to this knowledge. This is a limited-time offer to help as many people as possible." },
-  { q: "What are the most important things for the Masterclass?", a: "Come with an open mind, a notebook, and a quiet space. That's all you need to make the most of this transformative session." },
-  { q: "Is it live?", a: "Yes! This is a fully live and interactive Zoom session. You'll be able to ask questions and participate in real-time exercises." },
+  { q: "Will I get recording?", a: "No. It is a limited time broadcast only. The recordings are not shared." },
+  { q: "Is it in Hindi or English??", a: "This workshop will be conducted in English only." },
+  { q: "What is the duration?", a: "It is a 90 minutes program. The timing is mentioned at the top of this page." },
+  { q: "Why is FREE? Is it really going to be FREE?", a: "We want to reach as many people as possible, and give them an opportunity to transform their life. But the real cost of this masterclass is Rs. 499. It’s NOT going to be FREE in the near future. So, register before the price goes up." },
+  { q: "What are the next steps after registering for the Masterclass?", a: "You have to join the WhatsApp group for the Masterclass. All the announcements will be communicated to the group. We will also be sharing a link to the Masterclass over the registered email ID." },
+  { q: "Is it live?", a: "This Masterclass was originally recorded during a live session and is now available as a limited-time broadcast.- You’ll experience the full energy of the original session — just like those who attended it live." },
 ];
 
 const FAQ = () => (
