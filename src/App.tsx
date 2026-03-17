@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import ManifestationBootcampLanding from "./pages/OtoPage";
 import ThankYouFb from "./pages/Thankupage";
 import OtoThankYou from "./pages/OtoThankYou";
+import IndexGa from "./pages/IndexGa";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/fb13-oto" element={<ManifestationBootcampLanding />} />
           <Route path="/fb13-ty" element={<ThankYouFb />} />
           <Route path="/fb13-ty-oto" element={<OtoThankYou />} />
+           <Route path="/ga13" element={<IndexGa />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
