@@ -3,7 +3,7 @@ import { Shield, Sparkles } from "lucide-react";
 import AnimatedSection from "../AnimatedSection";
 
 const WEBHOOK_URL =
-  "https://offbeatn8n.coachswastik.com/webhook/smm-leads-fb13-Ga5";
+  "https://offbeatn8n.coachswastik.com/webhook/smm-leads-Ga13";
 
 const RegistrationFormGa = () => {
   const [form, setForm] = useState({

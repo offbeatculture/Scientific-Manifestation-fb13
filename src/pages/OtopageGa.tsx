@@ -98,7 +98,7 @@ export default function ManifestationBootcampLandingGa() {
     });
   }, [name, email, phone, profession]);
 
-  const razorpayUrl = `https://pages.razorpay.com/pl_SNsxZoCKGwBLRo/view?name=${encodeURIComponent(
+  const razorpayUrl = `https://pages.razorpay.com/pl_SSGSPxVjx4vIJ7/view?name=${encodeURIComponent(
     name
   )}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(
     phone
@@ -400,7 +400,7 @@ const videoSrc = `https://fast.wistia.net/embed/iframe/q8kby21w9t?autoplay=1&mut
 
         <button
           type="button"
-          onClick={() => navigate("/fb13-ty")}
+          onClick={() => navigate("/ga13-ty")}
           className="text-xs font-semibold text-slate-700 underline underline-offset-4 hover:text-slate-900 sm:text-sm"
         >
           No Thanks, I&apos;ll attend the Free Masterclass
