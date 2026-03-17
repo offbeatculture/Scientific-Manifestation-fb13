@@ -1,7 +1,7 @@
 // src/pages/OtoThankYou.tsx
 
 import { useEffect, useState } from "react";
-import { useFacebookPixel } from "../hooks/useFacebookPixel";
+
 
 const FREE_WA_GROUP = "http://join.ankitneerav.com/smm-wap-fb";
 const PAID_WA_GROUP = "https://join.ankitneerav.com/5day-wap-oto";
@@ -10,7 +10,7 @@ const DATA_URL =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vQTwPzzgnuxnM99svb-wpxDwzfPA-3lZP9cVqLv4hMH0GtKLollq3-tOFZ0jgzug_-vl3zXvo_HBYNs/pub?output=csv&gid=43987342";
 
 export default function OtoThankYou() {
-  useFacebookPixel();
+  
 
   const [masterclassDate, setMasterclassDate] = useState("");
   const [masterclassTime, setMasterclassTime] = useState("");
@@ -23,12 +23,12 @@ export default function OtoThankYou() {
       "Thank You – Your 5-Day Manifestation Bootcamp Purchase is Confirmed";
 
     const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute(
-        "content",
-        "Thank you for purchasing the 5-Day Manifestation Bootcamp with Ankit Neerav. Join the WhatsApp groups to get access updates and reminders."
-      );
-    }
+    // if (meta) {
+    //   meta.setAttribute(
+    //     "content",
+    //     "Thank you for purchasing the 5-Day Manifestation Bootcamp with Ankit Neerav. Join the WhatsApp groups to get access updates and reminders."
+    //   );
+    // }
 
   if (typeof window !== "undefined" && window.fbq) {
 

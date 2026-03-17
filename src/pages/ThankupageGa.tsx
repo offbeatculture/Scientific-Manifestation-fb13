@@ -1,31 +1,31 @@
 // src/pages/ThankYou.tsx
 import { useEffect } from "react";
-import { useFacebookPixel } from "../hooks/useFacebookPixel"; // ✅ fix path
+
 
 const WA_GROUP_LINK = "http://join.ankitneerav.com/smm-wap-fb";
 
 export default function ThankYouFbGa() {
   // Initializes pixels + PageView
-  useFacebookPixel("Lead");
+  
 
-  useEffect(() => {
-    document.title =
-      "Thank You – Manifest Your Dream Life Masterclass with Ankit Neerav";
+//   useEffect(() => {
+//     document.title =
+//       "Thank You – Manifest Your Dream Life Masterclass with Ankit Neerav";
 
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute(
-        "content",
-        "Thank you for registering for Ankit Neerav’s Manifest Your Dream Life – Science-Based Masterclass. Join the WhatsApp group now to get updates and reminders."
-      );
-    }
+    // const meta = document.querySelector('meta[name="description"]');
+    // if (meta) {
+    //   meta.setAttribute(
+    //     "content",
+    //     "Thank you for registering for Ankit Neerav’s Manifest Your Dream Life – Science-Based Masterclass. Join the WhatsApp group now to get updates and reminders."
+    //   );
+    // }
 
     // ✅ Fire Lead events (safe)
-    if (typeof window !== "undefined" && window.fbq) {
-      window.fbq("track", "Lead");
-      window.fbq("trackCustom", "Lead-Website");
-    }
-  }, []);
+//     if (typeof window !== "undefined" && window.fbq) {
+//       window.fbq("track", "Lead");
+//       window.fbq("trackCustom", "Lead-Website");
+//     }
+//   }, []);
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-aura-50 via-white to-white flex items-center justify-center px-4 py-10">
