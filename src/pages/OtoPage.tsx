@@ -293,9 +293,10 @@ export default function ManifestationBootcampLanding() {
 const firstRow = days.slice(0, 3);
 const secondRow = days.slice(3);
 
-const videoSrc = `https://fast.wistia.net/embed/iframe/kcsj8zfw2u?autoplay=1&muted=${
+const videoSrc = `https://fast.wistia.net/embed/iframe/rjhblvi6sb?autoplay=1&muted=${
   isMuted ? "true" : "false"
 }&controlsVisibleOnLoad=false`;
+
   return (
     <div className="min-h-screen bg-[#ebe4f5] text-slate-900">
 <header className="relative overflow-hidden">
