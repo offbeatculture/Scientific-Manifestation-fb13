@@ -293,7 +293,7 @@ export default function ManifestationBootcampLanding() {
 const firstRow = days.slice(0, 3);
 const secondRow = days.slice(3);
 
-const videoSrc = `https://fast.wistia.net/embed/iframe/rjhblvi6sb?autoplay=1&muted=${
+const videoSrc = `https://fast.wistia.net/embed/iframe/q8kby21w9t?autoplay=1&muted=${
   isMuted ? "true" : "false"
 }&controlsVisibleOnLoad=false`;
 
