@@ -293,9 +293,12 @@ export default function ManifestationBootcampLandingGa() {
 const firstRow = days.slice(0, 3);
 const secondRow = days.slice(3);
 
-const videoSrc = `https://fast.wistia.net/embed/iframe/q8kby21w9t?autoplay=1&muted=${
-  isMuted ? "true" : "false"
-}&controlsVisibleOnLoad=false`;
+// const videoSrc = `https://player.vimeo.com/video/1174789597?autoplay=1&muted=${
+//   isMuted ? 1 : 0
+// }&controls=0`;
+const videoSrc = `https://player.vimeo.com/video/1174789597?autoplay=1&muted=${
+  isMuted ? 1 : 0
+}`;
 
   return (
     <div className="min-h-screen bg-[#ebe4f5] text-slate-900">

@@ -14,7 +14,7 @@ import {
   VolumeX,
   Maximize2,
 } from "lucide-react";
-import { useFacebookPixel } from "@/hooks/useFacebookPixel";
+// import { useFacebookPixel } from "@/hooks/useFacebookPixel";
 import { time } from "console";
 
 const ACCENT_TEXT = "text-violet-700";
@@ -24,7 +24,7 @@ export default function ManifestationBootcampLanding() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  useFacebookPixel();
+  // useFacebookPixel();
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.fbq) {
@@ -293,9 +293,16 @@ export default function ManifestationBootcampLanding() {
 const firstRow = days.slice(0, 3);
 const secondRow = days.slice(3);
 
-const videoSrc = `https://fast.wistia.net/embed/iframe/q8kby21w9t?autoplay=1&muted=${
-  isMuted ? "true" : "false"
-}&controlsVisibleOnLoad=false`;
+// const videoSrc = `https://fast.wistia.net/embed/iframe/q8kby21w9t?autoplay=1&muted=${
+//   isMuted ? "true" : "false"
+// }&controlsVisibleOnLoad=false`;
+
+// const videoSrc = `https://player.vimeo.com/video/1174789597?autoplay=1&muted=${
+//   isMuted ? 1 : 0
+// }&controls=0`;
+const videoSrc = `https://player.vimeo.com/video/1174789597?autoplay=1&muted=${
+  isMuted ? 1 : 0
+}`;
 
   return (
     <div className="min-h-screen bg-[#ebe4f5] text-slate-900">
