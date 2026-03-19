@@ -20,6 +20,348 @@ import { time } from "console";
 const ACCENT_TEXT = "text-violet-700";
 const ACCENT_ICON = "text-violet-700";
 
+// ── CHECK ICON ──────────────────────────────────────────────
+function OfferCheckIcon({
+  color = "#7c3aed",
+  bg = "#ede9fe",
+}: {
+  color?: string;
+  bg?: string;
+}) {
+  return (
+    <span
+      className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
+      style={{ background: bg }}
+    >
+      <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+        <path
+          d="M2 6l3 3 5-5"
+          stroke={color}
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+  );
+}
+
+// ── OFFER ROW: core training day ────────────────────────────
+function OfferDayRow({
+  day,
+  title,
+  value,
+}: {
+  day: string;
+  title: string;
+  value: string;
+}) {
+  return (
+    <li className="flex items-start justify-between gap-2.5 border-b border-[#f0ecfc] py-2.5">
+      <div className="flex min-w-0 flex-1 items-start gap-2.5">
+        <OfferCheckIcon />
+        <span className="min-w-0 leading-snug">
+          <span className="block break-words text-sm font-medium text-[#2d1f5e] sm:text-[0.9rem]">
+            {title}
+          </span>
+          <span className="mt-0.5 block text-[0.68rem] font-semibold text-violet-500">
+            {day}
+          </span>
+        </span>
+      </div>
+      <span className="self-center whitespace-nowrap pl-2 text-[0.88rem] font-bold text-violet-700 shrink-0">
+        {value}
+      </span>
+    </li>
+  );
+}
+
+// ── OFFER ROW: bonus audio ──────────────────────────────────
+function OfferBonusRow({
+  label,
+  title,
+  value,
+}: {
+  label: string;
+  title: string;
+  value: string;
+}) {
+  return (
+    <li className="flex items-start justify-between gap-2.5 border-b border-[#f0ecfc] py-2.5">
+      <div className="flex min-w-0 flex-1 items-start gap-2.5">
+        <OfferCheckIcon color="#d97706" bg="#fef3c7" />
+        <span className="min-w-0 leading-snug">
+          <span className="block break-words text-sm font-medium text-amber-900 sm:text-[0.9rem]">
+            {title}
+          </span>
+          <span className="mt-0.5 block text-[0.68rem] font-semibold text-amber-600">
+            {label}
+          </span>
+        </span>
+      </div>
+      <span className="self-center whitespace-nowrap pl-2 text-[0.88rem] font-bold text-amber-600 shrink-0">
+        {value}
+      </span>
+    </li>
+  );
+}
+
+// ── OFFER STACK CARD ────────────────────────────────────────
+function OfferStackCard({
+  onUpgrade,
+  onSkip,
+}: {
+  onUpgrade: () => void;
+  onSkip: () => void;
+}) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div className="mx-auto w-full max-w-[480px]">
+      <div
+        className="overflow-hidden rounded-[22px] bg-white"
+        style={{
+          border: "1.5px solid #e2daf5",
+          boxShadow: "0 12px 48px rgba(90,50,180,0.10)",
+        }}
+      >
+        {/* Bundle image */}
+        <div
+          className="w-full"
+          style={{ aspectRatio: "16/8", background: "#0a0b18" }}
+        >
+          
+            <img
+              src="/oto.png"
+              alt="Scientific Manifestation Bootcamp Bundle"
+              className="block h-full w-full object-cover object-center"
+            />
+        </div>
+
+        {/* Body */}
+        <div className="px-5 pb-6 pt-6 sm:px-7 sm:pt-7">
+          <h2
+            className="mb-1.5 text-center font-extrabold leading-tight text-[#1a1035]"
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(1.25rem, 4vw, 1.55rem)",
+            }}
+          >
+            The Scientific Manifestation
+            <br />
+            5-Day Bootcamp
+          </h2>
+
+          <p className="mb-5 text-center text-[0.7rem] font-bold uppercase tracking-[0.16em] text-violet-600">
+            Everything Included In Your Upgrade
+          </p>
+
+          <ul className="mb-5">
+            <OfferDayRow
+              day="Day 1"
+              title="The Universal Language"
+              value="₹5,000"
+            />
+            <OfferDayRow
+              day="Day 2"
+              title="Money Manifestation Mastery"
+              value="₹5,000"
+            />
+            <OfferDayRow
+              day="Day 3"
+              title="The Continuum Method — Vision Board 2.0"
+              value="₹4,000"
+            />
+            <OfferDayRow
+              day="Day 4"
+              title="The D.V.A.R Framework — Beyond Visualization"
+              value="₹4,000"
+            />
+            <OfferDayRow
+              day="Day 5"
+              title="Dissociative Hypnotic Visualization"
+              value="₹5,000"
+            />
+
+            <li className="block border-b-0 py-2">
+              <div className="my-1 flex items-center gap-2">
+                <hr className="flex-1 border-t border-dashed border-[#d8d0f5]" />
+                <span className="whitespace-nowrap text-[0.6rem] font-bold uppercase tracking-[0.12em] text-violet-400">
+                  4 Powerful Audio Bonuses — Free
+                </span>
+                <hr className="flex-1 border-t border-dashed border-[#d8d0f5]" />
+              </div>
+            </li>
+
+            <OfferBonusRow
+              label="Bonus 1 · 7-Min Guided Audio"
+              title="Perfect Day Visualisation Audio"
+              value="₹2,000"
+            />
+            <OfferBonusRow
+              label="Bonus 2 · Affirmation Audio"
+              title="Delete Procrastination Audio"
+              value="₹3,000"
+            />
+            <OfferBonusRow
+              label="Bonus 3 · Subconscious Reprogramming"
+              title="Delete Money Blocks Audio"
+              value="₹2,000"
+            />
+            <OfferBonusRow
+              label="Bonus 4 · NLP Abundance Practice"
+              title="22-Min Hypnotic Visualisation Audio"
+              value="₹3,000"
+            />
+
+            <li
+              className="mt-2 flex items-start gap-2.5 rounded-xl px-3 py-2.5"
+              style={{ background: "#fdf4ff" }}
+            >
+              <OfferCheckIcon color="#9333ea" bg="#f3e8ff" />
+              <span className="min-w-0 leading-snug">
+                <span className="text-sm font-semibold text-[#581c87] sm:text-[0.9rem]">
+                  1-on-1 Call with a Success Advisor
+                </span>
+                <span className="mt-1 flex flex-wrap items-center gap-1.5">
+                  <span className="text-[0.68rem] font-semibold text-purple-600">
+                    From Ankit&apos;s Team
+                  </span>
+                  <span
+                    className="rounded-full px-2 py-0.5 text-[0.58rem] font-bold uppercase tracking-widest text-white"
+                    style={{ background: "#9333ea" }}
+                  >
+                    Limited Slots
+                  </span>
+                </span>
+              </span>
+            </li>
+
+            <li className="mt-0.5 flex items-start gap-2.5 py-2.5">
+              <OfferCheckIcon />
+              <span className="text-sm font-medium leading-snug text-[#2d1f5e] sm:text-[0.9rem]">
+                Lifetime Access to All Recordings
+              </span>
+            </li>
+          </ul>
+
+          <div
+            className="mb-4 flex items-center justify-between py-3"
+            style={{ borderTop: "1.5px solid #ede9fe" }}
+          >
+            <span className="text-[0.8rem] font-bold uppercase tracking-[0.1em] text-slate-500">
+              Total Value
+            </span>
+            <span
+              className="text-slate-400 line-through font-extrabold"
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "1.1rem",
+              }}
+            >
+              ₹33,000+
+            </span>
+          </div>
+
+          <div className="mb-5 text-center">
+            <p className="mb-1 text-[0.95rem] text-slate-400 line-through">
+              ₹33,000
+            </p>
+            <p
+              className="mb-3 leading-none font-extrabold text-violet-700"
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "clamp(2.4rem, 10vw, 3rem)",
+              }}
+            >
+              ₹1,499
+            </p>
+            <span
+              className="inline-block rounded-full px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.08em]"
+              style={{
+                background: "#fef3c7",
+                color: "#92400e",
+                border: "1px solid #fde68a",
+              }}
+            >
+              YOU SAVE: ₹31,501 (95% OFF)
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={onUpgrade}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            className="mb-3 w-full rounded-full px-4 py-4 text-sm font-bold tracking-wide text-white transition-all duration-150 sm:text-[0.95rem]"
+            style={{
+              background: "linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%)",
+              boxShadow: hovered
+                ? "0 8px 28px rgba(109,40,217,0.45)"
+                : "0 4px 20px rgba(109,40,217,0.35)",
+              transform: hovered ? "translateY(-2px)" : "translateY(0)",
+            }}
+          >
+            YES — Upgrade My Registration To The Bootcamp →
+          </button>
+
+          <div className="mb-4 flex justify-center gap-5">
+            <span className="flex items-center gap-1.5 text-[0.72rem] text-slate-500">
+              🔒 Secure Checkout
+            </span>
+            <span className="flex items-center gap-1.5 text-[0.72rem] text-slate-500">
+              ⚡ Instant Access
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={onSkip}
+            className="mb-5 w-full cursor-pointer border-none bg-transparent text-center text-[0.76rem] font-normal text-slate-400 underline"
+          >
+            No Thanks, I&apos;ll attend only the free masterclass
+          </button>
+
+
+
+
+          <div className="mb-4 rounded-xl px-4 py-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-100">
+  <p className="text-[0.85rem] font-semibold text-[#1a1035]">
+    1-on-1 Call with a Success Advisor
+  </p>
+
+  <div className="mt-1.5 flex flex-wrap items-center gap-2">
+    <span className="text-[0.78rem] font-semibold text-violet-600">
+      From Ankit&apos;s Team
+    </span>
+
+    <span className="rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-3 py-0.5 text-[0.6rem] font-bold tracking-[0.18em] text-white">
+      LIMITED SLOTS
+    </span>
+  </div>
+</div>
+
+          <div
+            className="flex items-start gap-3 rounded-xl px-4 py-3"
+            style={{ background: "#f5f3ff" }}
+          >
+            <span className="shrink-0 text-2xl">🛡️</span>
+            <div>
+              <p className="mb-0.5 text-[0.85rem] font-bold text-[#4c1d95]">
+                3-Day Money-Back Guarantee
+              </p>
+              <p className="text-[0.74rem] leading-snug text-violet-600">
+                Attend Day 1, 2 &amp; 3 — if you&apos;re not satisfied, get a full
+                refund. No questions asked.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ManifestationBootcampLanding() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -60,7 +402,9 @@ export default function ManifestationBootcampLanding() {
       .then((text) => {
         const rows = text
           .split("\n")
-          .map((row) => row.split(",").map((cell) => cell.replace(/"/g, "").trim()));
+          .map((row) =>
+            row.split(",").map((cell) => cell.replace(/"/g, "").trim())
+          );
 
         const headers = rows[0] || [];
         const columnIndex = headers.findIndex((h) =>
@@ -77,16 +421,11 @@ export default function ManifestationBootcampLanding() {
 
             setSessionDate(date);
             setSessionTime(time);
-
-
           }
         }
       })
       .catch((err) => console.error("Fetch error:", err));
   }, []);
-
-  
-  
 
   useEffect(() => {
     console.log("OTO PAGE PARAMS:", {
@@ -135,36 +474,18 @@ export default function ManifestationBootcampLanding() {
 
   const faqs = useMemo(
     () => [
-      { q: "Will I get recording?", a: "Yes, Recordings will be shared after the session" },
-  // { q: "Is this for beginners?", a: "Absolutely. Whether you're just starting or have tried manifestation before, this session is designed to work for all levels with a scientific approach." },
-  { q: "What is the duration?", a: "The Bootcamp is for 2 Hour each Day from Monday to Friday." },
-  // { q: "Why is FREE? Is it really going to be FREE?", a: "Yes, 100% free. Ankit believes everyone deserves access to this knowledge. This is a limited-time offer to help as many people as possible." },
-  // { q: "What are the most important things for the Masterclass?", a: "Come with an open mind, a notebook, and a quiet space. That's all you need to make the most of this transformative session." },
-  { q: "Is it live?", a: "This Masterclass was originally recorded during a live session and is now available as a limited-time broadcast.- You’ll experience the full energy of the original session — just like those who attended it live." },
-      // {
-      //   q: "Is this for beginners?",w
-      //   a: "Yes. Each day is structured with simple steps, guided prompts, and practical exercises you can do in 15–30 minutes.",
-      // },
-      // {
-      //   q: "How long do I need each day?",
-      //   a: "Most students complete the daily transformation in 15–30 minutes. If you want to go deeper, you’ll have optional bonus practices too.",
-      // },
-      // {
-      //   q: "Will I get lifetime access?",
-      //   a: "You’ll get access to the core materials and updates during your access window based on your offer.",
-      // },
-      // {
-      //   q: "What if I’ve tried manifesting and it didn’t work?",
-      //   a: "This program focuses on alignment plus action: clearing blocks, installing new beliefs, and building a repeatable system you can use for any goal.",
-      // },
-      // {
-      //   q: "Is there a community?",
-      //   a: "If your offer includes it, you’ll receive community access details after checkout.",
-      // },
-      // {
-      //   q: "Can I do this while busy?",
-      //   a: "Yes. This is designed for real life, and even if you miss a day, you can catch up.",
-      // },
+      {
+        q: "Will I get recording?",
+        a: "Yes, Recordings will be shared after the session",
+      },
+      {
+        q: "What is the duration?",
+        a: "The Bootcamp is for 2 Hour each Day from Monday to Friday.",
+      },
+      {
+        q: "Is it live?",
+        a: "This Masterclass was originally recorded during a live session and is now available as a limited-time broadcast.- You’ll experience the full energy of the original session — just like those who attended it live.",
+      },
     ],
     []
   );
@@ -290,132 +611,143 @@ export default function ManifestationBootcampLanding() {
     ],
     []
   );
-const firstRow = days.slice(0, 3);
-const secondRow = days.slice(3);
 
-// const videoSrc = `https://fast.wistia.net/embed/iframe/q8kby21w9t?autoplay=1&muted=${
-//   isMuted ? "true" : "false"
-// }&controlsVisibleOnLoad=false`;
+  const firstRow = days.slice(0, 3);
+  const secondRow = days.slice(3);
 
-// const videoSrc = `https://player.vimeo.com/video/1174789597?autoplay=1&muted=${
-//   isMuted ? 1 : 0
-// }&controls=0`;
-const videoSrc = `https://player.vimeo.com/video/1174789597?autoplay=1&muted=${
-  isMuted ? 1 : 0
-}`;
+  const videoSrc = `https://player.vimeo.com/video/1174789597?autoplay=1&muted=${
+    isMuted ? 1 : 0
+  }`;
 
   return (
     <div className="min-h-screen bg-[#ebe4f5] text-slate-900">
-<header className="relative overflow-hidden">
-  <div className="bg-[#1f1b4f] px-4 py-4 text-center">
-    <div className="mx-auto max-w-3xl">
-      <p className="text-lg font-bold text-white sm:text-2xl">
-        🎉 You&apos;re registered!
-      </p>
-      <p className="mt-1 text-base font-medium text-white sm:text-xl">
-        Your spot for the Scientific Manifestation Masterclass is confirmed.
-      </p>
-    </div>
-  </div>
-
-  <div className="px-4 pt-1 pb-5">
-    {/* HEADING */}
-    <div className="mx-auto max-w-5xl text-center">
-      <p className="text-lg font-bold uppercase text-black sm:text-xl">
-        But before you go
-      </p>
-
-      <h1 className="mt-0.5 text-3xl font-bold sm:text-4xl">
-        <span className="text-black">I Have Something</span>
-        <br className="sm:hidden" />
-        <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-          {" "}Special For YOU
-        </span>
-      </h1>
-    </div>
-
-    {/* VIDEO BOX */}
-    <div className="mx-auto mt-2 max-w-3xl rounded-xl border border-black/10 bg-white p-3 shadow-md">
-      <p className="text-center text-lg font-bold text-[#1f1b4f] sm:text-2xl">
-        IMPORTANT! Watch This Short Video
-      </p>
-
-      <p className="mt-1 text-center text-xs font-semibold text-[#1f1b4f] sm:text-base">
-        (Click on Unmute Button)
-      </p>
-
-      <div
-        ref={videoWrapperRef}
-        className="relative mt-3 h-[200px] overflow-hidden rounded-lg bg-black sm:h-[380px]"
-      >
-        <iframe
-          ref={iframeRef}
-          className="absolute inset-0 h-full w-full"
-          src={videoSrc}
-          title="Bootcamp overview video"
-          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-          allowFullScreen
-        />
-
-        {/* Video Controls */}
-        <div className="absolute bottom-3 right-3 z-20 flex items-center gap-2">
-          <button
-            type="button"
-            onClick={toggleMute}
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white shadow hover:bg-black/90"
-          >
-            {isMuted ? (
-              <VolumeX className="h-4 w-4" />
-            ) : (
-              <Volume2 className="h-4 w-4" />
-            )}
-          </button>
-
-          <button
-            type="button"
-            onClick={handleFullscreen}
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white shadow hover:bg-black/90"
-          >
-            <Maximize2 className="h-4 w-4" />
-          </button>
+      <header className="relative overflow-hidden">
+        <div className="bg-[#1f1b4f] px-4 py-4 text-center">
+          <div className="mx-auto max-w-3xl">
+            <p className="text-lg font-bold text-white sm:text-2xl">
+              🎉 You&apos;re registered!
+            </p>
+            <p className="mt-1 text-base font-medium text-white sm:text-xl">
+              Your spot for the Scientific Manifestation Masterclass is
+              confirmed.
+            </p>
+          </div>
         </div>
-      </div>
-    </div>
 
-    {/* DATE + BUTTONS */}
-    <div className="mx-auto mt-4 max-w-3xl text-center">
-      <p className="text-base font-bold text-black sm:text-xl">
-        Date &amp; Time :
-        <span className="ml-2">
-          {sessionDate || "Loading..."} {sessionTime || ""}
-        </span>
-      </p>
+        <div className="px-4 pb-5 pt-1">
+          <div className="mx-auto max-w-5xl text-center">
+            <p className="text-lg font-bold uppercase text-black sm:text-xl">
+              But before you go
+            </p>
 
-      <div className="mt-5 flex flex-col items-center gap-2">
-        <button
-          type="button"
-          onClick={() => window.open(razorpayUrl, "_blank")}
-          className="w-full max-w-xl rounded-full bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 px-5 py-2.5 shadow-md transition hover:scale-[1.01]"
-        >
-          <div className="text-base font-bold text-white sm:text-lg">
-            YES — Upgrade My Registration To The Bootcamp
+            <h1 className="mt-0.5 text-3xl font-bold sm:text-4xl">
+              <span className="text-black">I Have Something</span>
+              <br className="sm:hidden" />
+              <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+                {" "}
+                Special For YOU
+              </span>
+            </h1>
           </div>
-          <div className="text-xs text-white/95 sm:text-sm">
-            Lock in ₹1,499 before this offer disappears →
-          </div>
-        </button>
 
-        <button
-          type="button"
-          onClick={() => navigate("/fb13-ty")}
-          className="text-xs font-semibold text-slate-700 underline underline-offset-4 hover:text-slate-900 sm:text-sm"
-        >
-          No Thanks, I&apos;ll attend the Free Masterclass
-        </button>
-      </div>
-    </div>
+          <div className="mx-auto mt-2 max-w-3xl rounded-xl border border-black/10 bg-white p-3 shadow-md">
+            <p className="text-center text-lg font-bold text-[#1f1b4f] sm:text-2xl">
+              IMPORTANT! Watch This Short Video
+            </p>
+
+            <p className="mt-1 text-center text-xs font-semibold text-[#1f1b4f] sm:text-base">
+              (Click on Unmute Button)
+            </p>
+
+            <div
+              ref={videoWrapperRef}
+              className="relative mt-3 h-[200px] overflow-hidden rounded-lg bg-black sm:h-[380px]"
+            >
+              <iframe
+                ref={iframeRef}
+                className="absolute inset-0 h-full w-full"
+                src={videoSrc}
+                title="Bootcamp overview video"
+                allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                allowFullScreen
+              />
+
+              <div className="absolute bottom-3 right-3 z-20 flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={toggleMute}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white shadow hover:bg-black/90"
+                >
+                  {isMuted ? (
+                    <VolumeX className="h-4 w-4" />
+                  ) : (
+                    <Volume2 className="h-4 w-4" />
+                  )}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleFullscreen}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-black/70 text-white shadow hover:bg-black/90"
+                >
+                  <Maximize2 className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-4 max-w-3xl text-center">
+            <p className="text-base font-bold text-black sm:text-xl">
+              Date &amp; Time :
+              <span className="ml-2">
+                {sessionDate || "Loading..."} {sessionTime || ""}
+              </span>
+            </p>
+
+            <div className="mt-5 flex flex-col items-center gap-2">
+              <button
+                type="button"
+                onClick={() => window.open(razorpayUrl, "_blank")}
+                className="w-full max-w-xl rounded-full bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 px-5 py-2.5 shadow-md transition hover:scale-[1.01]"
+              >
+                <div className="text-base font-bold text-white sm:text-lg">
+                  YES — Upgrade My Registration To The Bootcamp
+                </div>
+                <div className="text-xs text-white/95 sm:text-sm">
+                  Lock in ₹1,499 before this offer disappears →
+                </div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => navigate("/fb13-ty")}
+                className="text-xs font-semibold text-slate-700 underline underline-offset-4 hover:text-slate-900 sm:text-sm"
+              >
+                No Thanks, I&apos;ll attend the Free Masterclass
+              </button>
+
+              
+          <div className="mt-4 rounded-xl px-4 py-3 bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-100">
+  <p className="text-[0.85rem] font-semibold text-[#1a1035]">
+    1-on-1 Call with a Success Advisor
+  </p>
+
+  <div className="mt-1.5 flex flex-wrap items-center gap-2">
+    <span className="text-[0.78rem] font-semibold text-violet-600">
+      From Ankit&apos;s Team
+    </span>
+
+    <span className="rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-3 py-0.5 text-[0.6rem] font-bold tracking-[0.18em] text-white">
+      LIMITED SLOTS
+    </span>
   </div>
-</header>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </header>
+
       <Section>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
@@ -450,8 +782,8 @@ const videoSrc = `https://player.vimeo.com/video/1174789597?autoplay=1&muted=${
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
             4 Powerful Audio Bonuses{" "}
-            <span className={`${ACCENT_TEXT} font-black`}>₹10,000+</span> — yours
-            free
+            <span className={`${ACCENT_TEXT} font-black`}>₹10,000+</span> —
+            yours free
           </h2>
 
           <p className="mt-4 font-semibold text-slate-700">
@@ -486,6 +818,28 @@ const videoSrc = `https://player.vimeo.com/video/1174789597?autoplay=1&muted=${
           {testimonials.map((t) => (
             <ManifestTestimonialCard key={`${t.name}-${t.quote}`} {...t} />
           ))}
+        </div>
+      </Section>
+
+      {/* ── NEW OFFER CARD SECTION BEFORE FAQ ───────────────── */}
+      <Section>
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+            Everything included in your{" "}
+            <span className={`${ACCENT_TEXT} font-black`}>upgrade</span>
+          </h2>
+
+          <p className="mt-4 font-semibold text-slate-700">
+            Here’s the complete value stack you unlock when you join the
+            Scientific Manifestation 5-Day Bootcamp today.
+          </p>
+        </div>
+
+        <div className="mt-10">
+          <OfferStackCard
+            onUpgrade={() => window.open(razorpayUrl, "_blank")}
+            onSkip={() => navigate("/fb13-ty")}
+          />
         </div>
       </Section>
 
