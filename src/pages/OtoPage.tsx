@@ -490,61 +490,121 @@ export default function ManifestationBootcampLanding() {
     []
   );
 
+  // const days = useMemo(
+  //   () => [
+  //     {
+  //       day: "Day 1",
+  //       title: "The Universal Language",
+  //       points: [
+  //         "Master the 3 principles of the universal language",
+  //         "Correct the mistakes blocking your manifestations",
+  //         "The Triad Formula: shift into powerful vibration in 120 seconds",
+  //         "Stop manifesting randomly and start manifesting consciously",
+  //       ],
+  //     },
+  //     {
+  //       day: "Day 2",
+  //       title: "Money Manifestation Mastery",
+  //       points: [
+  //         "The 3 laws of money manifestation anyone can implement",
+  //         "3 powerful money-making mindsets for those already earning",
+  //         "Understand abundance vs. scarcity once and for all",
+  //         "Replace old money beliefs with new empowering patterns",
+  //       ],
+  //     },
+  //     {
+  //       day: "Day 3",
+  //       title: "The Continuum Method — Vision Board 2.0",
+  //       points: [
+  //         "Why traditional vision boards fail",
+  //         "Make your vision board 10x more powerful",
+  //         "Design your dream life with a simple template",
+  //         "Manifest faster with this secret technique",
+  //       ],
+  //     },
+  //     {
+  //       day: "Day 4",
+  //       title: "The DVAR Framework — Beyond Visualization",
+  //       points: [
+  //         "Why visualization alone fails",
+  //         "3 powerful actualization techniques",
+  //         "Apply it to relationships, health, career, and money",
+  //         "See real-world results much faster",
+  //       ],
+  //     },
+  //     {
+  //       day: "Day 5",
+  //       title: "Dissociative Hypnotic Visualization",
+  //       points: [
+  //         "Combines NLP, mild hypnosis, and 4th-dimension techniques",
+  //         "Previously shared only with premium clients",
+  //         "The most powerful visualization for abundance",
+  //         "You’ll receive the full audio for lifetime practice",
+  //       ],
+  //     },
+  //   ],
+  //   []
+  // );
   const days = useMemo(
-    () => [
-      {
-        day: "Day 1",
-        title: "The Universal Language",
-        points: [
-          "Master the 3 principles of the universal language",
-          "Correct the mistakes blocking your manifestations",
-          "The Triad Formula: shift into powerful vibration in 120 seconds",
-          "Stop manifesting randomly and start manifesting consciously",
-        ],
-      },
-      {
-        day: "Day 2",
-        title: "Money Manifestation Mastery",
-        points: [
-          "The 3 laws of money manifestation anyone can implement",
-          "3 powerful money-making mindsets for those already earning",
-          "Understand abundance vs. scarcity once and for all",
-          "Replace old money beliefs with new empowering patterns",
-        ],
-      },
-      {
-        day: "Day 3",
-        title: "The Continuum Method — Vision Board 2.0",
-        points: [
-          "Why traditional vision boards fail",
-          "Make your vision board 10x more powerful",
-          "Design your dream life with a simple template",
-          "Manifest faster with this secret technique",
-        ],
-      },
-      {
-        day: "Day 4",
-        title: "The DVAR Framework — Beyond Visualization",
-        points: [
-          "Why visualization alone fails",
-          "3 powerful actualization techniques",
-          "Apply it to relationships, health, career, and money",
-          "See real-world results much faster",
-        ],
-      },
-      {
-        day: "Day 5",
-        title: "Dissociative Hypnotic Visualization",
-        points: [
-          "Combines NLP, mild hypnosis, and 4th-dimension techniques",
-          "Previously shared only with premium clients",
-          "The most powerful visualization for abundance",
-          "You’ll receive the full audio for lifetime practice",
-        ],
-      },
-    ],
-    []
-  );
+  () => [
+    {
+      day: "Day 1",
+      title: "The Universal Language",
+      image: "/public/1.png",
+      points: [
+        "Master the 3 principles of the universal language",
+        "Correct the mistakes blocking your manifestations",
+        "The Triad Formula: shift into powerful vibration in 120 seconds",
+        "Stop manifesting randomly and start manifesting consciously",
+      ],
+    },
+    {
+      day: "Day 2",
+      title: "Money Manifestation Mastery",
+      image: "/public/2.png",
+      points: [
+        "The 3 laws of money manifestation anyone can implement",
+        "3 powerful money-making mindsets for those already earning",
+        "Understand abundance vs. scarcity once and for all",
+        "Replace old money beliefs with new empowering patterns",
+      ],
+    },
+    {
+      day: "Day 3",
+      title: "The Continuum Method — Vision Board 2.0",
+      image: "/public/3.png",
+      points: [
+        "Why traditional vision boards fail",
+        "Make your vision board 10x more powerful",
+        "Design your dream life with a simple template",
+        "Manifest faster with this secret technique",
+      ],
+    },
+    {
+      day: "Day 4",
+      title: "The DVAR Framework — Beyond Visualization",
+      image: "/public/4.png",
+      points: [
+        "Why visualization alone fails",
+        "3 powerful actualization techniques",
+        "Apply it to relationships, health, career, and money",
+        "See real-world results much faster",
+      ],
+    },
+    {
+      day: "Day 5",
+      title: "Dissociative Hypnotic Visualization",
+      image: "/public/5.png",
+      points: [
+        "Combines NLP, mild hypnosis, and 4th-dimension techniques",
+        "Previously shared only with premium clients",
+        "The most powerful visualization for abundance",
+        "You’ll receive the full audio for lifetime practice",
+      ],
+    },
+  ],
+  []
+);
 
   const bonuses = useMemo(
     () => [
@@ -748,7 +808,7 @@ export default function ManifestationBootcampLanding() {
         </div>
       </header>
 
-      <Section>
+      {/* <Section>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
             What you’ll master in{" "}
@@ -776,7 +836,41 @@ export default function ManifestationBootcampLanding() {
             ))}
           </div>
         </div>
-      </Section>
+      </Section> */}
+
+  <Section>
+  <div className="mx-auto max-w-3xl text-center">
+    <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+      What you’ll master in{" "}
+      <span className={`${ACCENT_TEXT} font-black`}>
+        5 transformational days
+      </span>
+    </h2>
+
+    <p className="mt-4 font-semibold text-slate-700">
+      Every day is action-based. You get a task, you take action, and you
+      start seeing results — many people report breakthroughs by Day 3.
+    </p>
+  </div>
+
+  {/* GRID */}
+  <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+    {days.slice(0, 3).map((d) => (
+      <ManifestDayCard key={d.day} {...d} />
+    ))}
+
+    {/* 👉 PERFECT CENTERED LAST ROW */}
+    <div className="col-span-full flex justify-center">
+      <div className="grid w-full max-w-4xl gap-6 sm:grid-cols-2">
+        {days.slice(3).map((d) => (
+          <ManifestDayCard key={d.day} {...d} />
+        ))}
+      </div>
+    </div>
+
+  </div>
+</Section>
 
       <Section>
         <div className="mx-auto max-w-3xl text-center">
@@ -909,24 +1003,38 @@ function Section({ children }: { children: React.ReactNode }) {
     </section>
   );
 }
-
 function ManifestDayCard({
   day,
   title,
   points,
+  image,
 }: {
   day: string;
   title: string;
   points: string[];
+  image: string;
 }) {
   const dayNumber = String(day).replace("Day ", "");
 
   return (
     <div className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-[0_26px_80px_-60px_rgba(124,58,237,0.24)]">
+      
+      {/* 🖼️ Image (NO GREY BACKGROUND) */}
+      <div className="mb-4 overflow-hidden rounded-xl aspect-[16/9]">
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
+        />
+      </div>
+
+      {/* Glow effect */}
       <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
         <div className="absolute -top-16 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-violet-500/10 blur-[100px]" />
       </div>
 
+      {/* Header */}
       <div className="relative flex items-start gap-3">
         <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-violet-100/60 ring-1 ring-violet-700/15">
           <span className="text-sm font-black text-violet-700">
@@ -938,7 +1046,9 @@ function ManifestDayCard({
           <p className="text-xs font-black tracking-widest text-slate-600">
             {String(day).toUpperCase()}
           </p>
-          <h3 className="mt-1 text-lg font-black text-slate-900">{title}</h3>
+          <h3 className="mt-1 text-lg font-black text-slate-900">
+            {title}
+          </h3>
 
           <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-extrabold text-slate-700 shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-violet-700" />
@@ -947,6 +1057,7 @@ function ManifestDayCard({
         </div>
       </div>
 
+      {/* Points */}
       <div className="relative mt-5 space-y-2">
         {points.map((p) => (
           <div
@@ -961,15 +1072,87 @@ function ManifestDayCard({
         ))}
       </div>
 
+      {/* Divider */}
       <div className="relative mt-6 h-px w-full bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
+      {/* Footer */}
       <div className="relative mt-4 flex items-center justify-between text-xs font-black text-slate-700">
-        <span className="text-violet-700">Clarity → Identity → Action</span>
+        <span className="text-violet-700">
+          Clarity → Identity → Action
+        </span>
         <ArrowRight className="h-4 w-4 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-slate-700" />
       </div>
     </div>
   );
 }
+
+// function ManifestDayCard({
+//   day,
+//   title,
+//   points,
+// }: {
+// function ManifestDayCard({
+//   day,
+//   title,
+//   points,
+//   image,
+// }: {
+//   day: string;
+//   title: string;
+//   points: string[];
+//   image: string; // ✅ ADD THIS
+// }) {
+//   const dayNumber = String(day).replace("Day ", "");
+//   return (
+    
+//     <div className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:shadow-[0_26px_80px_-60px_rgba(124,58,237,0.24)]">
+//       <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
+//         <div className="absolute -top-16 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-violet-500/10 blur-[100px]" />
+//       </div>
+
+//       <div className="relative flex items-start gap-3">
+//         <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-violet-100/60 ring-1 ring-violet-700/15">
+//           <span className="text-sm font-black text-violet-700">
+//             {dayNumber}
+//           </span>
+//         </div>
+
+//         <div className="min-w-0">
+//           <p className="text-xs font-black tracking-widest text-slate-600">
+//             {String(day).toUpperCase()}
+//           </p>
+//           <h3 className="mt-1 text-lg font-black text-slate-900">{title}</h3>
+
+//           <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-extrabold text-slate-700 shadow-sm">
+//             <Sparkles className="h-3.5 w-3.5 text-violet-700" />
+//             Daily transformation
+//           </div>
+//         </div>
+//       </div>
+
+//       <div className="relative mt-5 space-y-2">
+//         {points.map((p) => (
+//           <div
+//             key={p}
+//             className="flex items-start gap-3 text-sm font-semibold leading-relaxed text-slate-800"
+//           >
+//             <span className="mt-[2px] inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-violet-100/60 ring-1 ring-violet-700/15">
+//               <CheckCircle2 className="h-4 w-4 text-violet-700" />
+//             </span>
+//             <span className="flex-1">{p}</span>
+//           </div>
+//         ))}
+//       </div>
+
+//       <div className="relative mt-6 h-px w-full bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+
+//       <div className="relative mt-4 flex items-center justify-between text-xs font-black text-slate-700">
+//         <span className="text-violet-700">Clarity → Identity → Action</span>
+//         <ArrowRight className="h-4 w-4 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-slate-700" />
+//       </div>
+//     </div>
+//   );
+// }
 
 function ManifestBonusCard({
   icon: Icon,
