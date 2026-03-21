@@ -90,7 +90,7 @@ const RegistrationFormGa = () => {
         ...utms,
       }).toString();
 
-      window.location.href = `/ga13-oto?${query}`;
+      window.location.href = `/ga13-ty?${query}`;
 
       setForm({
         name: "",
