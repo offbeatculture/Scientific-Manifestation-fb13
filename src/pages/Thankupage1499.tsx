@@ -1,61 +1,70 @@
-import { useEffect } from "react";
-import { useFacebookPixel } from "@/hooks/useFacebookPixel";
+import React, { useEffect, useState } from "react";
 
-const WHATSAPP_LINK = "https://chat.whatsapp.com/InN1bbsRK70Izoz1mfAGVY"; // 🔴 replace
-
-export default function ThankYouPurchase() {
-  useFacebookPixel();
+export default function ThankYouPage() {
+  const [date, setDate] = useState("");
 
   useEffect(() => {
-    document.title = "Payment Successful 🎉";
-
-    // 🔥 Track Purchase
-    if (typeof window !== "undefined" && window.fbq) {
-      window.fbq("track", "Purchase", {
-        value: 1499,
-        currency: "INR",
+    fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vQTwPzzgnuxnM99svb-wpxDwzfPA-3lZP9cVqLv4hMH0GtKLollq3-tOFZ0jgzug_-vl3zXvo_HBYNs/pub?gid=43987342&single=true&output=csv")
+      .then((res) => res.text())
+      .then((data) => {
+        const row = data.split("\n")[1]; // first data row
+        const dateValue = row.split(",")[3]; // column index 3
+        console.log(row);
+        
+        setDate(dateValue.replace(/"/g, "").trim());
       });
-    }
   }, []);
 
+  console.log("date",date);
+  
+  const whatsappLink =
+    "join.ankitneerav.com/5day-adv-mb";
+
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-violet-50 via-white to-indigo-50">
-      <div className="w-full max-w-md rounded-3xl bg-white shadow-xl p-6 text-center border border-violet-100">
+    <div className="min-h-screen flex items-center justify-center bg-[#f7f6f3] px-4">
+      
+      <div className="max-w-2xl w-full bg-white rounded-3xl shadow-xl p-8 md:p-10 text-center">
 
-        {/* Success Emoji */}
-        <div className="text-4xl mb-3">🎉</div>
-
-        {/* Heading */}
-        <h1 className="text-2xl font-black text-violet-700">
-          Payment Successful!
+        {/* HEADER */}
+        <h1 className="text-3xl md:text-4xl font-semibold text-[#1d1d1d] mb-4">
+          🎉 Congrats!! Your Seat Is Almost Confirmed
         </h1>
 
-        <p className="mt-3 text-sm text-gray-600">
-          You have successfully enrolled in the{" "}
-          <strong>Advanced Manifestation Bootcamp</strong>.
+        <p className="text-lg text-gray-600 mb-6">
+          You've successfully secured your spot for the   {" "} <br></br>
+          <span className="font-bold ">
+             Advancd Manifestation Bootcamp ( {date})
+          </span>
         </p>
 
-        {/* Highlight */}
-        <div className="mt-5 bg-violet-50 border border-violet-200 rounded-xl p-3 text-sm font-semibold text-violet-700">
-          Important: Join the WhatsApp group to get access & updates
+        {/* STEPS */}
+        <div className="text-left bg-[#f7f6f3] rounded-2xl p-6 mb-8 space-y-4">
+          <h2 className="text-xl font-semibold text-center mb-4">
+            Final Steps to Confirm Your Seat:
+          </h2>
+
+          <p>📱 <b>WhatsApp:</b> Tap below and message us to confirm</p>
+          <p>🔗 <b>Links:</b> Get community & webinar access</p>
+          <p>💻 <b>Download Zoom:</b> Be ready with pen & paper</p>
+          <p>👥 <b>Join Community:</b> Stay updated with all sessions</p>
         </div>
 
-        {/* CTA Button */}
+        {/* CTA */}
         <a
-          href={WHATSAPP_LINK}
+          href={whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-block w-full rounded-xl bg-green-600 px-6 py-3 text-white font-bold shadow hover:bg-green-700 transition"
+          className="inline-block bg-green-500 hover:bg-green-600 text-white text-lg font-semibold px-8 py-4 rounded-2xl transition"
         >
-          👉 Join WhatsApp Group
+          👉 Confirm on WhatsApp
         </a>
 
-        {/* Small note */}
-        {/* <p className="mt-4 text-xs text-gray-500">
-          We’ve also sent details to your email 📩
+        {/* FOOT NOTE */}
+        {/* <p className="text-sm text-gray-500 mt-6">
+          ⚠️ Access will only be shared on WhatsApp after confirmation
         </p> */}
 
       </div>
-    </section>
+    </div>
   );
 }
