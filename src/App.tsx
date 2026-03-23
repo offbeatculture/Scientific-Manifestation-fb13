@@ -12,6 +12,7 @@ import IndexGa from "./pages/IndexGa";
 import ManifestationBootcampLandingGa from "./pages/OtopageGa";
 import OtoThankYouGa from "./pages/OtoThankYouGa";
 import ThankYouFbGa from "./pages/ThankupageGa";
+import Thankupage1499 from "./pages/Thankupage1499";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
            <Route path="/ga13-oto" element={< ManifestationBootcampLandingGa/>} />
            <Route path="/ga13-ty-oto" element={<OtoThankYouGa />} />
            <Route path="/ga13-ty" element={<ThankYouFbGa/>} />
+           <Route path="/1499-ty" element={<Thankupage1499/>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
