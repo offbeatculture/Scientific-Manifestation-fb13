@@ -17,8 +17,7 @@ export default function ThankYouPage() {
 
   console.log("date",date);
   
-  const whatsappLink =
-    "join.ankitneerav.com/5day-adv-mb";
+ const whatsappLink = "https://join.ankitneerav.com/5day-adv-mb";
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f7f6f3] px-4">
