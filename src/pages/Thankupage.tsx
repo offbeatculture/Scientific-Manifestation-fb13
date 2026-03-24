@@ -1,12 +1,15 @@
 // src/pages/ThankYou.tsx
-import { useEffect } from "react";
-import { useFacebookPixel } from "../hooks/useFacebookPixel"; // ✅ fix path
+import { useEffect, useRef } from "react";
+import { useFacebookPixel } from "../hooks/useFacebookPixel";
 
 const WA_GROUP_LINK = "http://join.ankitneerav.com/smm-wap-fb";
 
 export default function ThankYouFb() {
-  // Initializes pixels + PageView
-  useFacebookPixel("Lead");
+  // fire only standard Lead event once
+  useFacebookPixel("Lead", {
+    value: 0,
+    currency: "INR",
+  });
 
   useEffect(() => {
     document.title =
@@ -18,12 +21,6 @@ export default function ThankYouFb() {
         "content",
         "Thank you for registering for Ankit Neerav’s Manifest Your Dream Life – Science-Based Masterclass. Join the WhatsApp group now to get updates and reminders."
       );
-    }
-
-    // ✅ Fire Lead events (safe)
-    if (typeof window !== "undefined" && window.fbq) {
-      window.fbq("track", "Lead");
-      window.fbq("trackCustom", "Lead-Website");
     }
   }, []);
 
@@ -56,7 +53,7 @@ export default function ThankYouFb() {
 
         <p className="mt-3 text-sm text-ink-600">
           You’ve successfully booked your seat for the <br />
-          <strong> Scientific Manifestation Masterclass</strong>.
+          <strong>Scientific Manifestation Masterclass</strong>.
         </p>
 
         <div className="mt-6">
