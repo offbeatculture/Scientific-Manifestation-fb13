@@ -33,6 +33,7 @@ const RegistrationFormGa = () => {
       utm_campaign: params.get("utm_campaign") || "",
       utm_content: params.get("utm_content") || "",
       utm_term: params.get("utm_term") || "",
+      gclid: params.get("gclid") || "", 
     };
   };
 
