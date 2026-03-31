@@ -19,6 +19,7 @@ import RefundPolicy from "./pages/RefundPolicy";
 import ShippingPolicy from "./pages/ShippingPolicy";
 import Contact from "./pages/Contact";
 import IndexOrg from "./pages/IndexOrg";
+import ThankYouOrg from "./pages/ThankuPageOrg";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<IndexOrg />} />
+          <Route path="/ty" element={<ThankYouOrg />} />
           <Route path="/fb13" element={<Index />} />
           <Route path="/fb13-oto" element={<ManifestationBootcampLanding />} />
           <Route path="/fb13-ty" element={<ThankYouFb />} />
