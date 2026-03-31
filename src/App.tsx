@@ -18,6 +18,7 @@ import Terms from "./pages/Terms";
 import RefundPolicy from "./pages/RefundPolicy";
 import ShippingPolicy from "./pages/ShippingPolicy";
 import Contact from "./pages/Contact";
+import IndexOrg from "./pages/IndexOrg";
 
 const queryClient = new QueryClient();
 
@@ -28,7 +29,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<IndexOrg />} />
           <Route path="/fb13" element={<Index />} />
           <Route path="/fb13-oto" element={<ManifestationBootcampLanding />} />
           <Route path="/fb13-ty" element={<ThankYouFb />} />
