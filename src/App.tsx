@@ -20,6 +20,7 @@ import ShippingPolicy from "./pages/ShippingPolicy";
 import Contact from "./pages/Contact";
 import IndexOrg from "./pages/IndexOrg";
 import ThankYouOrg from "./pages/ThankuPageOrg";
+import IndexFb14 from "./pages/IndexFb14";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/" element={<IndexOrg />} />
           <Route path="/ty" element={<ThankYouOrg />} />
           <Route path="/fb13" element={<Index />} />
+          <Route path="/fb14" element={<IndexFb14 />} />
           <Route path="/fb13-oto" element={<ManifestationBootcampLanding />} />
           <Route path="/fb13-ty" element={<ThankYouFb />} />
           <Route path="/fb13-ty-oto" element={<OtoThankYou />} />
