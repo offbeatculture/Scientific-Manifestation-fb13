@@ -1,5 +1,4 @@
 
-import RegistrationForm from "@/components/landing/RegistrationForm";
 import StickyCTA from "@/components/landing/StickyCTA";
 import { useFacebookPixel } from "@/hooks/useFacebookPixel";
 import HeroSectionFb14 from "@/components/landing/fb14/HeroSection";
@@ -11,6 +10,7 @@ import SpeakerSection from "@/components/landing/fb14/SpeakerSection";
 import Testimonials from "@/components/landing/fb14/Testimonials";
 import FAQ from "@/components/landing/fb14/FAQ";
 import FinalCTA from "@/components/landing/fb14/FinalCTA";
+import RegistrationForm from "@/components/landing/fb14/RegistrationForm";
 
 const IndexFb14 = () => {
 
@@ -18,7 +18,7 @@ const IndexFb14 = () => {
   return (
     <main className="overflow-hidden">
       <HeroSectionFb14 />
-      <RegistrationForm />
+      <RegistrationForm/>
       <PainPointsfb13 />
       <BridgeSectionCareerScientificManifestation/>
       <SessionFeatures/>
