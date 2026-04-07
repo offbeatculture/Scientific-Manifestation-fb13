@@ -90,7 +90,7 @@ const RegistrationForm = () => {
         ...utms,
       }).toString();
 
-      window.location.href = `/fb13-ty?${query}`;
+      window.location.href = `/fb14-ty?${query}`;
 
       setForm({
         name: "",
