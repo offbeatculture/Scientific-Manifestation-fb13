@@ -37,6 +37,7 @@ const App = () => (
           <Route path="/fb14" element={<IndexFb14 />} />
           <Route path="/fb13-oto" element={<ManifestationBootcampLanding />} />
           <Route path="/fb13-ty" element={<ThankYouFb />} />
+          <Route path="/fb14-ty" element={<ThankYouFb />} />
           <Route path="/fb13-ty-oto" element={<OtoThankYou />} />
            <Route path="/ga13" element={<IndexGa />} />
            <Route path="/ga13-oto" element={< ManifestationBootcampLandingGa/>} />
