@@ -51,7 +51,16 @@ const RegistrationForm = () => {
 
     setLoading(true);
     setMessage(null);
-
+// ✅ PUSH TO DATALAYER HERE
+  if (typeof window !== "undefined" && (window as any).dataLayer) {
+    (window as any).dataLayer.push({
+      event: "ec_form_submit",
+      user_data: {
+        email: form.email, // actual email
+        phone_number: `+91${form.phone}`, // convert to E.164 format
+      },
+    });
+  }
     try {
       const utms = getUTMs();
 
